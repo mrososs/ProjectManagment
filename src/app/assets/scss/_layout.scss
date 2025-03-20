@@ -1,0 +1,13 @@
+@import "variables";
+* {
+  font-family: "inter", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+button {
+  background-color: $base-btn;
+}
