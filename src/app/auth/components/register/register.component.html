@@ -70,8 +70,15 @@
                     </div>
                   </div>
               </div>
-              <div class="buttom text-center">
-              <button type="submit" class="btn btn-warning w-50 mt-5 rounded-5 text-light">Save</button>
+              <div class="mx-auto w-50">
+                <button
+                class="main-btn p-3 mt-3 rounded-pill w-100"
+                type="submit"
+                [disabled]="!registerForm.valid"
+                [ngClass]="{ 'disabled': !registerForm.valid }"
+              >
+                Send
+              </button>
               </div>
           </form>
           </div>
