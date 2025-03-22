@@ -10,11 +10,11 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 
 @NgModule({
   declarations: [
-    AuthComponent,
+    // AuthComponent,
     ChangePasswordComponent,
     ResetPasswordComponent,
-    LoginPageComponent,
+    // LoginPageComponent,
   ],
-  imports: [CommonModule, AuthRoutingModule, SharedModule],
+  imports: [CommonModule, AuthRoutingModule ,  SharedModule],
 })
 export class AuthModule {}

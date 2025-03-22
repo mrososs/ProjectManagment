@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { CustomFormFieldComponent } from '../../../shared/components/custom-form-field/custom-form-field.component';
 
 @Component({
   selector: 'app-change-password',
@@ -16,6 +17,10 @@ export class ChangePasswordComponent {
   });
 
   constructor(private _AuthService: AuthService) {}
+
+  getControl(controlName: string): FormControl {
+    return this.changePasswordForm.get(controlName) as FormControl;
+  }
 
   onchangePassword(form: any) {
     console.log(form);
