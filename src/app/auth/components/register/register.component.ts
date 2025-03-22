@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +20,6 @@ export class RegisterComponent {
 
   constructor(
     private _AuthService: AuthService, 
-    private _Toastr: ToastrService
   ) {}
 
   passwordMatcher(formGroup: AbstractControl): { [key: string]: boolean } | null {
@@ -48,11 +46,9 @@ export class RegisterComponent {
     this._AuthService.register(userData).subscribe({
       next: (res) => {
         console.log(res);
-        this._Toastr.success('Registered Successfully', 'Success');
       },
       error: (err) => {
         console.log("Error Response:", err);
-        this._Toastr.error(err.error.message, "Error");
       }
     });
 
