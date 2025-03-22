@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-page',
@@ -8,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginPageComponent {
   loginForm!: FormGroup;
-  constructor(private _AuthService: AuthService) {
+  constructor(private _AuthService: AuthService,private _toaster:ToastrService) {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
@@ -20,7 +21,7 @@ export class LoginPageComponent {
   login() {
     this._AuthService.login(this.loginForm.value).subscribe({
       next: (res) => {
-        console.log(res);
+        this._toaster.success('Hello world!', 'Toastr fun!');
       },
     });
   }

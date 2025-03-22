@@ -5,13 +5,22 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormFieldComponent } from './components/custom-form-field/custom-form-field.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [CustomFormFieldComponent],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule,RouterModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    RouterModule,
+
+  ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
   exports: [
     MaterialModule,
