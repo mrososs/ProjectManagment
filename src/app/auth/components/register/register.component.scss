@@ -1,26 +1,5 @@
 section{
-    overflow: hidden;
-    background-image: url(../../../../assets/img/Rectangle.png);
-  
-    .image1-container {
-      z-index: 555;
-      &::before {
-        content: url('../../../../assets/img/Vector\ 51.png');
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-    }
-      }
-  .main-content{
-    background-color: #314a59c3;
-    border-radius: 25px !important;
-    .head p{
-      font-size: 12px;
-    }
-    form ::-webkit-input-placeholder{
-      color: #fff;
-      font-size: 14px;
-    }
+  .form{
+    background-color: #314a59c3 !important;
   }
 }

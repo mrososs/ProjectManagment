@@ -19,7 +19,7 @@ export class RegisterComponent {
   }, this.passwordMatcher); 
 
   constructor(
-    private _AuthService: AuthService, 
+    private _AuthService: AuthService,
   ) {}
 
   passwordMatcher(formGroup: AbstractControl): { [key: string]: boolean } | null {
@@ -27,10 +27,12 @@ export class RegisterComponent {
     const confirmPassword = formGroup.get('confirmPassword')?.value;
     return password !== confirmPassword ? { 'passwordMismatch': true } : null;
   }
-
+  getControl(controlName: string): FormControl {
+    return this.registerForm.get(controlName) as FormControl;
+  }
   onSubmit() {
     if (this.registerForm.invalid) {
-      this.registerForm.markAllAsTouched(); // اختصار لتحديث حالة الحقول
+      this.registerForm.markAllAsTouched();
       return;
     }
 
