@@ -9,9 +9,11 @@ const BASE_URL = 'https://upskilling-egypt.com:3003/api/v1';
 
 export const httpRequestInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router); // Inject Router for navigation
+  const token = localStorage.getItem('userToken') ;
 
   if (!req.url.startsWith('http')) {
-    req = req.clone({ url: `${BASE_URL}/${req.url}` });
+    req = req.clone({ url: `${BASE_URL}/${req.url}` ,
+      setHeaders:{Authorization: `Bearer ${token}` }  });
   }
 
   return next(req).pipe(
