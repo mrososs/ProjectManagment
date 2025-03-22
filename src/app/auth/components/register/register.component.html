@@ -31,43 +31,38 @@
                     ></app-custom-form-field>
       
                     </div>
-                    <div class="mt-3">
-                      <app-custom-form-field
-                      [label]="'Password'"
-                      [placeholder]="'Enter your password'"
-                      [control]="getControl('password')"
-                      [type]="'password'"
-                    ></app-custom-form-field>
-                      <!-- <small *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched" class="text-danger">Password must be at least 6 characters</small> -->
-                    </div>
+                    .m
+                    <app-custom-form-field
+                    [label]="'Password'"
+                    [placeholder]="'Enter your password'"
+                    [control]="getControl('password')"
+                    [type]="'password'"
+                  ></app-custom-form-field>
+                    <!-- <small *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched" class="text-danger">Password must be at least 6 characters</small> -->
                   </div>
       
                   <div class="col-md-6">
-                    <div class="mt-3">
-                      <app-custom-form-field
+                    <app-custom-form-field
                       [label]="'E-mail'"
                       [placeholder]="'Enter your E-mail'"
                       [control]="getControl('email')"
                     ></app-custom-form-field>
                     <!-- <small *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched" class="text-danger">Enter a valid email</small> -->
-                    </div>
-                    <div class="mt-3">
-                      <app-custom-form-field
+      
+                    <app-custom-form-field
                       [label]="'Phone Number'"
                       [placeholder]="'Phone Number'"
                       [control]="getControl('number')"
                       [type]="'number'"
                     ></app-custom-form-field>
-                    </div>      
-                    <div class="mt-3">
-                      <app-custom-form-field
+      
+                    <app-custom-form-field
                       [label]="'Confirm Password'"
                       [placeholder]="'Confirm New Password'"
                       [control]="getControl('confirmPassword')"
                       [type]="'password'"
                     ></app-custom-form-field>
                     <!-- <small *ngIf="registerForm.controls.confirmPassword.invalid && registerForm.controls.confirmPassword.touched" class="text-danger">Passwords do not match</small> -->
-                    </div>
                   </div>
               </div>
               <div class="buttom text-center">
