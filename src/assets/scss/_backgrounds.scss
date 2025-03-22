@@ -28,16 +28,23 @@
         font-weight: $bold-font;
         color: $text-primary;
         position: relative;
-        &::before {
-          content: "";
-          position: absolute;
-          width: 3%;
-          height: 4px;
-          background: $text-primary;
-          bottom: -3px;
-          left: 0.2rem;
+        
+        .first-letter {
+          position: relative;
+          display: inline-block;
+      
+          &::after {
+            content: "";
+            position: absolute;
+            width: 100%; // Underline width matches letter
+            height: 4px;
+            background: $text-primary;
+            bottom: -3px;
+            left: 0;
+          }
         }
       }
+      
     }
   }
 }

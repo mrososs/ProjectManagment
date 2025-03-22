@@ -7,15 +7,17 @@ import {
 } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormFieldComponent } from './components/custom-form-field/custom-form-field.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [CustomFormFieldComponent],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule,RouterModule],
   providers: [provideHttpClient(withInterceptorsFromDi())],
   exports: [
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterModule,
     CustomFormFieldComponent,
   ],
 })
