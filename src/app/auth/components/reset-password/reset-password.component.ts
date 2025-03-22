@@ -23,10 +23,10 @@ export class ResetPasswordComponent {
   onResetPassword(form: any): void {
     console.log(form);
     this._AuthService.onResetPassword(form.value).subscribe({
-      next: (res) => {
+      next: (res:any) => {
         console.log(res);
       },
-      error: (err) => {
+      error: (err:any) => {
         console.log(err);
       },
       complete: () => {},
