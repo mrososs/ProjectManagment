@@ -1,0 +1,71 @@
+// .custom-field {
+//   width: 100%;
+//   color: white;
+
+//   mat-label {
+//     color: orange;
+//     font-size: 13px;
+//     font-weight: 400;
+//   }
+
+//   input {
+//     color: white !important;
+//     font-size: 14px;
+//   }
+
+//   /* Style for the placeholder */
+//   input::placeholder {
+//     color: white !important;
+//     font-size: 12px;
+//     opacity: 0;
+//   }
+
+//   /* Remove background for the Material Design input field */
+//   .mdc-text-field {
+//     background-color: transparent !important;
+//     box-shadow: none !important;
+//   }
+
+//   /* Remove the background on hover & focus */
+//   .mdc-text-field:hover,
+//   .mdc-text-field:focus,
+//   .mdc-text-field.mdc-text-field--focused {
+//     background-color: transparent !important;
+//     box-shadow: none !important;
+//   }
+
+//   /* Remove focus overlay */
+//   .mat-mdc-form-field-focus-overlay {
+//     background-color: transparent !important;
+//     opacity: 0 !important;
+//   }
+
+//   /* Remove the ripple effect */
+//   .mdc-text-field::before,
+//   .mdc-text-field::after {
+//     display: none !important;
+//   }
+
+//   /* Set the underline style */
+//   .mat-mdc-form-field-bottom-fill {
+//     background-color: #ffffff !important;
+//     opacity: 0.7;
+//     height: 1px !important;
+//   }
+
+//   /* Focused underline style */
+//   .mdc-line-ripple::before,
+//   .mdc-line-ripple::after {
+//     border-bottom-color: white !important;
+//     border-bottom-width: 1px !important;
+//     opacity: 0.2;
+//   }
+
+//   /* Ensure active underline matches design */
+//   .mdc-line-ripple.mdc-line-ripple--active::after {
+//     transform: scaleX(1) !important;
+//     opacity: 1;
+//     border-bottom-color: white !important;
+//     border-bottom-width: 1px !important;
+//   }
+// }
