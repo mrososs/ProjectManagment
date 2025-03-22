@@ -20,6 +20,11 @@ export class ResetPasswordComponent {
 
   constructor(private _AuthService: AuthService) {}
 
+  getControl(controlName: string): FormControl {
+    return this.resetPasswordForm.get(controlName) as FormControl;
+  }
+
+
   onResetPassword(form: any): void {
     console.log(form);
     this._AuthService.onResetPassword(form.value).subscribe({
