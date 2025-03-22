@@ -6,11 +6,19 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomFormFieldComponent } from './components/custom-form-field/custom-form-field.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
+  declarations: [CustomFormFieldComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule,RouterModule],
   providers: [provideHttpClient(withInterceptorsFromDi())],
-  exports: [MaterialModule],
+  exports: [
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
+    CustomFormFieldComponent,
+  ],
 })
 export class SharedModule {}

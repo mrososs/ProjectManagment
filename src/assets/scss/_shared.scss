@@ -1,0 +1,131 @@
+.custom-field {
+  width: 100%;
+  color: $white-text;
+
+  mat-label {
+    color: $text-primary;
+    font-size: $font-14;
+    font-weight: $reg-font;
+  }
+
+  input {
+    color: $white-text !important;
+    font-size: $font-14;
+  }
+
+  /* Style for the placeholder */
+  input::placeholder {
+    color: $white-text !important;
+    font-size: $font-12;
+    opacity: 0;
+  }
+
+  /* Remove background for the Material Design input field */
+  .mdc-text-field {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Remove the background on hover & focus */
+  .mdc-text-field:hover,
+  .mdc-text-field:focus,
+  .mdc-text-field.mdc-text-field--focused {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Remove focus overlay */
+  .mat-mdc-form-field-focus-overlay {
+    background-color: transparent !important;
+    opacity: 0 !important;
+  }
+
+  /* Remove the ripple effect */
+  .mdc-text-field::before,
+  .mdc-text-field::after {
+    display: none !important;
+  }
+
+  /* Set the underline style */
+  .mat-mdc-form-field-bottom-fill {
+    background-color: $white-text !important;
+    opacity: 0.7;
+    height: 1px !important;
+  }
+
+  /* Focused underline style */
+  .mdc-line-ripple::before,
+  .mdc-line-ripple::after {
+    border-bottom-color: $white-text !important;
+    border-bottom-width: 1px !important;
+    opacity: 0.2;
+  }
+
+  /* Ensure active underline matches design */
+  .mdc-line-ripple.mdc-line-ripple--active::after {
+    transform: scaleX(1) !important;
+    opacity: 1;
+    border-bottom-color: $white-text !important;
+    border-bottom-width: 1px !important;
+  }
+}
+// ------------------------------------------------
+
+// container(form & title)
+.main-content {
+  background-color: rgba(49, 89, 81, 0.9);
+  p {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 46px;
+    letter-spacing: -0.4px;
+  }
+  .main-form-title {
+    color: rgba(239, 155, 40, 1);
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 6px;
+    letter-spacing: -0.4px;
+
+    .underLine {
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 90%;
+        height: 4px;
+        background-color: rgba(239, 155, 40, 1);
+      }
+    }
+  }
+
+  label {
+    color: rgba(239, 155, 40, 1);
+  }
+  input {
+    &::placeholder {
+      color: #fff;
+    }
+  }
+}
+
+// Button
+.main-btn {
+  color: #fff;
+  font-weight: 600;
+  background-color: rgba(239, 155, 40, 1);
+  border: none;
+  &:hover {
+    opacity: 0.7;
+  }
+  &.disabled {
+    background-color: rgba(239, 155, 40, 0.5);
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
