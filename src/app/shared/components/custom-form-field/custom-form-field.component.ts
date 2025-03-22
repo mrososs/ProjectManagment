@@ -10,4 +10,6 @@ export class CustomFormFieldComponent {
   @Input() label!: string; // Label like "E-mail"
   @Input() placeholder!: string; // Placeholder like "Enter your E-mail"
   @Input() control!: FormControl; // Keep this as FormControl
+  @Input() type: string = 'text'; // New Input Property with Default "text"
+
 }
