@@ -1,1 +1,38 @@
-<p>auth works!</p>
+<section class="vh-100">
+  <div class="auth-background h-100">
+    <div class="text">
+      <div class="login">
+        <div class="logo mb-2">
+          <img src="../../../../assets/img/PMSLogo.svg" alt="logo" />
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="form col-md-6">
+            <p>Welcome to PMS</p>
+            <h1>Login</h1>
+            <div class="mt-5">
+              <form [formGroup]="loginForm">
+                <app-custom-form-field
+                label="E-mail"
+                placeholder="Enter your E-mail"
+                [control]="emailControl"
+                ></app-custom-form-field>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="left h-100">
+      <img
+        class="position-absolute left__img"
+        src="../../../../assets/img/Vector 49.png"
+        alt=""
+      />
+      <img
+        class="position-absolute right__img"
+        src="../../../../assets/img/Vector 48.png"
+        alt=""
+      />
+    </div>
+  </div>
+</section>
