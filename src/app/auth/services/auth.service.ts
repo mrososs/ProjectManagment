@@ -16,5 +16,17 @@ export class AuthService {
   // }
 
 
+  register(data: any): Observable<any> {
+    return this._HttpClient.post('Users/Register', data);
+  }  
   
+  onResetPassword(UserParams: any): Observable<any> {
+    return this._HttpClient.post(
+      `https://upskilling-egypt.com:3003/api/v1/Users/Reset`,
+      { params: UserParams }
+    );
+  }
+  login(user:ILogin): Observable<ILogin> {
+    return this._HttpClient.post<ILogin>(`Users/Login`, user);
+  }
 }
