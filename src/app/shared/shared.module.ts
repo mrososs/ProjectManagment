@@ -10,20 +10,21 @@ import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormFieldComponent } from './components/custom-form-field/custom-form-field.component';
 import { RouterModule } from '@angular/router';
+import { FilePreviewComponent } from './components/file-preview/file-preview.component';
 
 @NgModule({
-  declarations: [CustomFormFieldComponent],
+  declarations: [CustomFormFieldComponent, FilePreviewComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
     RouterModule,
-
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
   exports: [
     MaterialModule,
+    FilePreviewComponent,
     ReactiveFormsModule,
     FormsModule,
     RouterModule,

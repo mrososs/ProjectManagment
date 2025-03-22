@@ -21,7 +21,7 @@ export class AuthService {
       { params: UserParams }
     );
   }
-  login(user:ILogin): Observable<ILogin> {
+  login(user: ILogin): Observable<ILogin> {
     return this._HttpClient.post<ILogin>(`Users/Login`, user);
   }
 }

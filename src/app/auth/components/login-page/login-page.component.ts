@@ -13,8 +13,16 @@ export class LoginPageComponent {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
+      basicfile: new FormControl(null, Validators.required),
     });
   }
+  // public GetFileOnLoad(event: any) {
+  //   var file = event.target.files[0];
+  //   var element = document.getElementById("fakeFileInput") as HTMLInputElement | null;
+  //   if(element != null) {
+  //     element.value = file?.name;
+  //   }
+  // }
   getControl(controlName: string): FormControl {
     return this.loginForm.get(controlName) as FormControl;
   }

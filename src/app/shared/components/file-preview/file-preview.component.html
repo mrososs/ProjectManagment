@@ -1,0 +1,8 @@
+<a
+  (click)="openPreview($event)"
+  *ngIf="passedFile"
+  class="primary-text"
+  [title]="passedFile.name"
+>
+  {{ passedFile.name }}
+</a>
