@@ -15,6 +15,11 @@ export class AuthService {
   //   return this._HttpClient.put(`https://upskilling-egypt.com:3003/api/v1/Users/ChangePassword`   )
   // }
 
+
+  register(data: any): Observable<any> {
+    return this._HttpClient.post('Users/Register', data);
+  }  
+  
   onResetPassword(UserParams: any): Observable<any> {
     return this._HttpClient.post(
       `https://upskilling-egypt.com:3003/api/v1/Users/Reset`,
