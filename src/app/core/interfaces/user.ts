@@ -17,3 +17,7 @@ export interface User {
   creationDate: string;
   modificationDate: string;
 }
+export interface ILogin{
+  email:string;
+  password:string;
+}
