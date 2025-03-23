@@ -1,0 +1,59 @@
+<section class="vh-100">
+    <div class="auth-background h-100">
+      <div class="text h-100 d-flex justify-content-center align-items-center">
+        <div class="login w-100">
+          <div class="logo mb-2">
+            <img src="../../../../assets/img/PMSLogo.svg" alt="logo" />
+          </div>
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="form col-md-6">
+              <p>Welcome to PMS</p>
+              <h1><span class="first-letter">V</span>erify Account</h1>
+  
+              <div class="mt-2">
+                <form [formGroup]="verifyForm">
+                  <div class="row">
+                    <div class="col-12">
+                      <app-custom-form-field
+                        [label]="'E-mail'"
+                        [placeholder]="'Enter your E-mail'"
+                        [control]="getControl('email')"
+                      ></app-custom-form-field>
+                    </div>
+                    <div class="col-12">
+                      <app-custom-form-field
+                        [label]="'OTP Verification'"
+                        [placeholder]="'Enter Verification'"
+                        [control]="getControl('code')"
+                        [type]="'otp'"
+                      ></app-custom-form-field>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="mt-2 w-75 mx-auto">
+                <button
+                  class="main-btn p-3 mt-3 rounded-pill w-100"
+                  (click)="sendData(verifyForm)"
+                  >            
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="left h-100">
+        <img
+          class="position-absolute left__img"
+          src="../../../../assets/img/login2.png"
+          alt=""
+        />
+        <img
+          class="position-absolute right__img"
+          src="../../../../assets/img/Group 48102070.png"
+          alt=""
+        />
+      </div>
+    </div>
+  </section>
