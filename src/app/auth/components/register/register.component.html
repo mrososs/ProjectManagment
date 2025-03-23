@@ -5,75 +5,81 @@
         <div class="logo mb-2">
           <img src="../../../../assets/img/PMSLogo.svg" alt="logo" />
         </div>
-        <div class="d-flex justify-content-center align-items-center" >
+        <div class="d-flex justify-content-center align-items-center">
           <div class="form col-md-6 w-75">
             <p>Welcome to PMS</p>
             <h1><span class="first-letter">C</span>reate New Account</h1>
             <div class="mt-2">
               <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <div class="row">
-                    <div class="col-md-6">
-                      <div class="mt-3">
-                        <app-custom-form-field
+                  <div class="col-md-6">
+                    <div class="mt-3">
+                      <app-custom-form-field
                         [label]="'User Name'"
                         [placeholder]="'Enter your Name'"
                         [control]="getControl('userName')"
                         [type]="'text'"
                       ></app-custom-form-field>
-                            <!-- <small *ngIf="registerForm.controls.userName.invalid && registerForm.controls.userName.touched" class="text-danger">Name is required</small> -->
-                      </div>    
-                      <div class="mt-3">
-                        <app-custom-form-field
+                      <!-- <small *ngIf="registerForm.controls.userName.invalid && registerForm.controls.userName.touched" class="text-danger">Name is required</small> -->
+                    </div>
+                    <div class="mt-3">
+                      <app-custom-form-field
                         [label]="'Country'"
                         [placeholder]="'Enter your Country'"
                         [control]="getControl('country')"
                         [type]="'country'"
                       ></app-custom-form-field>
-        
-                      </div>
-                      <div class="mt-3">
-                        <app-custom-form-field
+                    </div>
+                    <div class="mt-3">
+                      <app-custom-form-field
                         [label]="'Password'"
                         [placeholder]="'Enter your password'"
                         [control]="getControl('password')"
                         [type]="'password'"
                       ></app-custom-form-field>
-                        <!-- <small *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched" class="text-danger">Password must be at least 6 characters</small> -->
-                      </div>
+                      <!-- <small *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched" class="text-danger">Password must be at least 6 characters</small> -->
                     </div>
-        
-                    <div class="col-md-6">
-                      <div class="mt-3">
-                        <app-custom-form-field
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mt-3">
+                      <app-custom-form-field
                         [label]="'E-mail'"
                         [placeholder]="'Enter your E-mail'"
                         [control]="getControl('email')"
                       ></app-custom-form-field>
                       <!-- <small *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched" class="text-danger">Enter a valid email</small> -->
-                      </div>
-                      <div class="mt-3">
-                        <app-custom-form-field
+                    </div>
+                    <div class="mt-3">
+                      <app-custom-form-field
                         [label]="'Phone Number'"
                         [placeholder]="'Phone Number'"
-                        [control]="getControl('number')"
+                        [control]="getControl('phoneNumber')"
                         [type]="'number'"
                       ></app-custom-form-field>
-                      </div>      
-                      <div class="mt-3">
-                        <app-custom-form-field
+                    </div>
+                    <div class="mt-3">
+                      <app-custom-form-field
                         [label]="'Confirm Password'"
                         [placeholder]="'Confirm New Password'"
                         [control]="getControl('confirmPassword')"
                         [type]="'password'"
                       ></app-custom-form-field>
                       <!-- <small *ngIf="registerForm.controls.confirmPassword.invalid && registerForm.controls.confirmPassword.touched" class="text-danger">Passwords do not match</small> -->
-                      </div>
                     </div>
+                  </div>
                 </div>
                 <div class="buttom text-center">
-                <button type="submit" class="btn btn-warning w-50 mt-5 rounded-5 text-light">Save</button>
+                  <button
+                    [disabled]="!registerForm.valid"
+                    [ngClass]="{ disabled: !registerForm.valid }"
+                    type="submit"
+                    class="main-btn p-3 mt-3 rounded-pill w-75"
+                  >
+                    Save
+                  </button>
                 </div>
-            </form>
+              </form>
             </div>
           </div>
         </div>
@@ -92,4 +98,4 @@
       />
     </div>
   </div>
-  </section>
+</section>

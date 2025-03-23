@@ -37,6 +37,6 @@ export class VerifyComponent {
         this._Toastr.error(err.error.message);
       }
     });
-    console.log(data.value);
+   
   }
 }
