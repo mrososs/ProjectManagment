@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { httpRequestInterceptor } from './core/interceptors/http-request.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 5000,

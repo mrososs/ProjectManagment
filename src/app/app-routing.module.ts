@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
+import { SplashScreenComponent } from './shared/components/splash-screen/splash-screen.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '', component: SplashScreenComponent }, // Splash screen first
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
-
   {
     path: 'dashboard',
     loadChildren: () =>

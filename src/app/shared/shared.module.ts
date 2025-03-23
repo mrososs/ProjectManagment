@@ -11,9 +11,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormFieldComponent } from './components/custom-form-field/custom-form-field.component';
 import { RouterModule } from '@angular/router';
 import { FilePreviewComponent } from './components/file-preview/file-preview.component';
+import { ValidateDirective } from './directives/validate.directive';
+import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 
 @NgModule({
-  declarations: [CustomFormFieldComponent, FilePreviewComponent],
+  declarations: [CustomFormFieldComponent, FilePreviewComponent,ValidateDirective,SplashScreenComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -24,6 +26,8 @@ import { FilePreviewComponent } from './components/file-preview/file-preview.com
   providers: [provideHttpClient(withInterceptorsFromDi())],
   exports: [
     MaterialModule,
+    SplashScreenComponent,
+    ValidateDirective,
     FilePreviewComponent,
     ReactiveFormsModule,
     FormsModule,
