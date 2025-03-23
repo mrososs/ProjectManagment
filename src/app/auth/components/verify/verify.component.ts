@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-verify',
   standalone: false,
@@ -11,10 +12,12 @@ export class VerifyComponent {
 
   verifyForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
+    code: new FormControl('',[Validators.required] )
   });
 
   constructor(
-    private _AuthService: AuthService
+    private _AuthService: AuthService,
+    private _Router: Router
   ) { }
 
 
