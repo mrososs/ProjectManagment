@@ -11,7 +11,7 @@
               <h1><span class="first-letter">V</span>erify Account</h1>
   
               <div class="mt-2">
-                <form>
+                <form [formGroup]="verifyForm">
                   <div class="row">
                     <div class="col-12">
                       <app-custom-form-field
@@ -24,7 +24,7 @@
                       <app-custom-form-field
                         [label]="'OTP Verification'"
                         [placeholder]="'Enter Verification'"
-                        [control]="getControl('otp')"
+                        [control]="getControl('code')"
                         [type]="'otp'"
                       ></app-custom-form-field>
                     </div>
@@ -33,7 +33,10 @@
               </div>
               <div class="mt-2 w-75 mx-auto">
                 <button
-                  class="main-btn p-3 mt-3 rounded-pill w-100">
+                  class="main-btn p-3 mt-3 rounded-pill w-100"
+                  (click)="sendData(verifyForm)"
+                  >
+                  
                   Save
                 </button>
               </div>

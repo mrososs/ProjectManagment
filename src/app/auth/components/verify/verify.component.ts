@@ -24,4 +24,19 @@ export class VerifyComponent {
   getControl(controlName: string): FormControl {
     return this.verifyForm.get(controlName) as FormControl;
   }
+
+
+
+
+  sendData(data: FormGroup) {
+    this._AuthService.verify(data.value).subscribe({
+      next: () => {
+      },
+      error: (err) => {
+        console.log(err.error);
+      }
+    });
+  
+    console.log(data.value);
+  }
 }
