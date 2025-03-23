@@ -16,12 +16,17 @@ const MaterialComponents = [
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
+
 ];
 
 @NgModule({
   declarations: [],
 
-  imports: [CommonModule, MaterialComponents,],
+  imports: [
+    CommonModule,
+     MaterialComponents,
+    //  MaterialFileInputModule
+    ],
   exports: [MaterialComponents],
 })
 export class MaterialModule {}

@@ -13,7 +13,7 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 
 @NgModule({
   declarations: [
-    AuthComponent,
+    // AuthComponent,
     ChangePasswordComponent,
     ResetPasswordComponent,
     LoginPageComponent,

@@ -4,6 +4,7 @@ import { AbstractControl, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-custom-form-field',
   templateUrl: './custom-form-field.component.html',
+  standalone :false ,
   encapsulation: ViewEncapsulation.None,
 })
 export class CustomFormFieldComponent {

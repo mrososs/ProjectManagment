@@ -3,7 +3,8 @@ import { Component, ElementRef, Input, Renderer2 } from '@angular/core';
 @Component({
   selector: 'app-file-preview',
   templateUrl: './file-preview.component.html',
-  styleUrl: './file-preview.component.scss'
+  styleUrl: './file-preview.component.scss' ,
+  standalone:false ,
 })
 export class FilePreviewComponent {
   @Input() passedFile: File | undefined;
