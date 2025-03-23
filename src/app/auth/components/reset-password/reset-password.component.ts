@@ -5,8 +5,6 @@ import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-reset-password',
-  standalone: false,
-  // imports: [],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.scss',
 })
