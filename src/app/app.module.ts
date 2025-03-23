@@ -1,26 +1,26 @@
-import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { httpRequestInterceptor } from './core/interceptors/http-request.interceptor';
-import { SharedModule } from './shared/shared.module';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [AppComponent,],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
-    MatFormFieldModule,
-    ReactiveFormsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      progressBar: true,
+    }),
   ],
-  providers: [provideHttpClient(withInterceptors([httpRequestInterceptor])), provideAnimationsAsync()],
+  providers: [provideHttpClient(withInterceptors([httpRequestInterceptor]))],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
