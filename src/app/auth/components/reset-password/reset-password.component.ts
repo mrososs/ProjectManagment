@@ -7,6 +7,7 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.scss',
+  standalone:false ,
 })
 export class ResetPasswordComponent {
   resetPasswordForm = new FormGroup({
