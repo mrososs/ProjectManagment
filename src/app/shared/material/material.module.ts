@@ -27,7 +27,6 @@ const MaterialComponents = [
      MaterialComponents,
     //  MaterialFileInputModule
     ],
-  imports: [CommonModule, MaterialComponents,],
   exports: [MaterialComponents],
 })
 export class MaterialModule {}
