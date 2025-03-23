@@ -27,25 +27,13 @@
                       [type]="'password'"
                     ></app-custom-form-field>
                   </div>
-                  <div class="col-12">
-                    <mat-form-field class="w-100" appearance="outline">
-                      <!-- <mat-label>Upload File</mat-label> -->
-                      <input
-                        matInput
-                        [attr.type]="'file'"
-                        formControlName="basicfile"
-                      />
-
-                      <mat-icon matSuffix>cloud_download</mat-icon>
-                    </mat-form-field>
-                  </div>
                 </div>
               </form>
             </div>
             <div class="mt-2">
               <div class="d-flex justify-content-between align-items-center">
-                <p><a>Register Now ?</a></p>
-                <p><a>Forget Password ?</a></p>
+                <p><a [routerLink]="['/auth/register']">Register Now ?</a></p>
+                <p><a [routerLink]="['/auth/forgetPassword']">Forget Password ?</a></p>
               </div>
             </div>
             <div class="mt-2">
