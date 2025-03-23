@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-verify',
   standalone: false,
@@ -17,6 +18,7 @@ export class VerifyComponent {
 
   constructor(
     private _AuthService: AuthService,
+    private _Toastr : ToastrService,
     private _Router: Router
   ) { }
 
@@ -31,12 +33,14 @@ export class VerifyComponent {
   sendData(data: FormGroup) {
     this._AuthService.verify(data.value).subscribe({
       next: () => {
+        this._Toastr.success('Account Verified Successfully');
+        this._Router.navigate(['/auth/login']);
       },
       error: (err) => {
         console.log(err.error);
+        this._Toastr.error(err.error.message);
       }
     });
-  
     console.log(data.value);
-  }
+  }
 }
