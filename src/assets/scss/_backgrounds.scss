@@ -22,17 +22,22 @@
         line-height: 1rem;
         color: $white-text;
         font-size: $font-14;
+        a {
+          line-height: 1rem;
+          color: $white-text;
+          font-size: $font-14;
+        }
       }
       h1 {
         font-size: $font-32;
         font-weight: $bold-font;
         color: $text-primary;
         position: relative;
-        
+
         .first-letter {
           position: relative;
           display: inline-block;
-      
+
           &::after {
             content: "";
             position: absolute;
@@ -44,7 +49,6 @@
           }
         }
       }
-      
     }
   }
 }
