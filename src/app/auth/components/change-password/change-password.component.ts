@@ -20,7 +20,7 @@ export class ChangePasswordComponent {
 
   getControl(controlName: string): FormControl {
     return this.changePasswordForm.get(controlName) as FormControl;
-  }
+  }
 
   onchangePassword(form: any) {
     console.log(form);
