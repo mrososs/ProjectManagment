@@ -22,13 +22,9 @@ export class VerifyComponent {
     private _Router: Router
   ) { }
 
-
   getControl(controlName: string): FormControl {
     return this.verifyForm.get(controlName) as FormControl;
   }
-
-
-
 
   sendData(data: FormGroup) {
     this._AuthService.verify(data.value).subscribe({
