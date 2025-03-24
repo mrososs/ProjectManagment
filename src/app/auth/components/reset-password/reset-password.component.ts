@@ -7,6 +7,7 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.scss',
+  standalone:false ,
 })
 export class ResetPasswordComponent {
   resetPasswordForm = new FormGroup({
@@ -18,13 +19,18 @@ export class ResetPasswordComponent {
 
   constructor(private _AuthService: AuthService) {}
 
+  getControl(controlName: string): FormControl {
+    return this.resetPasswordForm.get(controlName) as FormControl;
+  }
+
+
   onResetPassword(form: any): void {
     console.log(form);
     this._AuthService.onResetPassword(form.value).subscribe({
-      next: (res) => {
+      next: (res:any) => {
         console.log(res);
       },
-      error: (err) => {
+      error: (err:any) => {
         console.log(err);
       },
       complete: () => {},

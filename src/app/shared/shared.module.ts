@@ -5,7 +5,8 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
+// import { ToastrModule } from 'ngx-toastr';
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormFieldComponent } from './components/custom-form-field/custom-form-field.component';
