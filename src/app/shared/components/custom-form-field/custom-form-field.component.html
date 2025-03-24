@@ -2,15 +2,8 @@
   <mat-label>{{ label }}</mat-label>
   <input
     matInput
-    required
     [formControl]="control"
     [placeholder]="placeholder"
     [type]="type"
-    [errorStateMatcher]="matcher"
   />
-  <!-- <mat-error *ngIf="control?.hasError('required') && control?.touched"> {{label}} Is Required</mat-error> -->
-  <mat-error *ngIf="hasError">
-    {{getErrorMessage }}
-  </mat-error>
-
 </mat-form-field>
