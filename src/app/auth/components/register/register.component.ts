@@ -3,11 +3,13 @@ import {
   AbstractControl,
   FormControl,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { passwordsMatchValidator } from '../../../shared/validators/password-matcher';
 
 @Component({
   selector: 'app-register',
@@ -30,9 +32,8 @@ export class RegisterComponent {
       ]),
       confirmPassword: new FormControl('', Validators.required),
     },
-    { validators: this.passwordMatcher } // ✅ Pass as validators object
+    { validators: passwordsMatchValidator } // ✅ Pass as validators object
   );
-
 
   constructor(
     private _AuthService: AuthService,
@@ -40,13 +41,7 @@ export class RegisterComponent {
     private _toaster: ToastrService
   ) {}
 
-  passwordMatcher(
-    formGroup: AbstractControl
-  ): { [key: string]: boolean } | null {
-    const password = formGroup.get('password')?.value;
-    const confirmPassword = formGroup.get('confirmPassword')?.value;
-    return password !== confirmPassword ? { passwordMismatch: true } : null;
-  }
+
   getControl(controlName: string): FormControl {
     return this.registerForm.get(controlName) as FormControl;
   }
@@ -76,7 +71,5 @@ export class RegisterComponent {
         this._toaster.success('User Registered Successfully');
       },
     });
-
-   
   }
 }

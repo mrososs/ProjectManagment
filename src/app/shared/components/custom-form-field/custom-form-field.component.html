@@ -5,5 +5,9 @@
     [formControl]="control"
     [placeholder]="placeholder"
     [type]="type"
+    [pmValidate]="control"
   />
+  <mat-error *ngIf="control.invalid && (control.dirty || control.touched)">
+    {{ getErrorMessage() }}
+  </mat-error>
 </mat-form-field>
