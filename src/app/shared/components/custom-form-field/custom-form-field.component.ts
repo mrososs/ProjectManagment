@@ -4,7 +4,7 @@ import { AbstractControl, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-custom-form-field',
   templateUrl: './custom-form-field.component.html',
-  standalone :false ,
+  standalone: false,
   encapsulation: ViewEncapsulation.None,
 })
 export class CustomFormFieldComponent {
@@ -18,6 +18,11 @@ export class CustomFormFieldComponent {
     if (this.control.errors?.['minlength'])
       return `Minimum ${this.control.errors['minlength'].requiredLength} characters required.`;
     if (this.control.errors?.['pattern']) return 'Invalid format.';
+    // Check if form has the passwordsMismatch error
+    // ✅ Check if Confirm Password has a mismatch error
+    if (this.control.errors?.['passwordsMismatch']) {
+      return 'Passwords do not match.';
+    }
     return 'Invalid input.';
   }
 }
