@@ -13,7 +13,7 @@ export class LoginPageComponent {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      basicfile: new FormControl(null, Validators.required),
+      // basicfile: new FormControl(null, Validators.required),
     });
   }
   // public GetFileOnLoad(event: any) {
