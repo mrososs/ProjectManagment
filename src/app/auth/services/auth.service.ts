@@ -11,13 +11,10 @@ Observable;
 export class AuthService {
   constructor(private _HttpClient: HttpClient) {}
 
+  // onChangingPassword():Observable<any>{
+  //   return this._HttpClient.put(`https://upskilling-egypt.com:3003/api/v1/Users/ChangePassword`   )
+  // }
 
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('token'); // Example: Check if token exists
-  }
-   login(user: ILogin): Observable<ILogin> {
-    return this._HttpClient.post<ILogin>(`Users/Login`, user);
-  }
   register(data: any): Observable<any> {
     return this._HttpClient.post('Users/Register', data);
   }
