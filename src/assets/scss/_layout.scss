@@ -4,9 +4,12 @@
 @import "login-page";
 @import "splash";
 @import "navbar";
-
+@import "homepage";
 * {
   font-family: "inter", sans-serif;
+}
+body {
+  background-color: $background;
 }
 a {
   text-decoration: none;

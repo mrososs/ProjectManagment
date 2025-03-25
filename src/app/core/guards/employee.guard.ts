@@ -9,7 +9,7 @@ export const employeeGuard: CanActivateFn = (route, state) => {
   if (storageService.isEmployee()) {
     return true;
   } else {
-    router.navigate(['/dashboard']); // Redirect unauthorized users
+    router.navigate(['/auth']); // Redirect unauthorized users
     return false;
   }
 };
