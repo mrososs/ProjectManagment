@@ -30,4 +30,7 @@ export class AuthService {
  onChangingPassword(UserData: any):Observable<any>{
     return this._HttpClient.put(`Users/ChangePassword` , UserData)
   }
+  login(user: ILogin): Observable<ILogin> {
+    return this._HttpClient.post<ILogin>(`Users/Login`, user);
+  }
 }
