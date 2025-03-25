@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { managerGuard } from '../core/guards/manager.guard';
 import { employeeGuard } from '../core/guards/employee.guard';
 
