@@ -1,0 +1,62 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 $font-16;
+    background-color: $nav-bg !important;
+    box-shadow: 0px $font-1 $font-4 0px rgba(0, 0, 0, 0.15);
+
+    .notification-btn {
+        color: $base-btn;
+        position: relative;
+    }
+
+    .notification-btn mat-icon {
+        font-size: $font-30 !important;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        margin-left: $font-16;
+        border-left: $font-1 solid #9A9A9A;
+        padding-left: $font-12;
+
+        .avatar {
+            width: $font-50;
+            height: $font-50;
+            border-radius: 50%;
+            margin-right: $font-8;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.2;
+        }
+
+        .username {
+            font-family: Montserrat;
+            margin-bottom: $font-5;
+            font-weight: 400;
+            font-size: $font-14;
+            letter-spacing: 0%;
+            color: #0E382F;
+        }
+
+        .email {
+            font-family: Montserrat;
+            font-weight: 400;
+            font-size: $font-12;
+            letter-spacing: 0%;
+
+            color: #0000005E;
+        }
+
+        .arrow {
+            color: #A7A7A7;
+        }
+
+    }
+}

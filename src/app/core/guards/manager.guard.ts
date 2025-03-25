@@ -1,9 +1,9 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
-import { StorgeService } from '../services/storge.service';
+import { StorageService } from '../services/storage.service';
 
 export const managerGuard: CanActivateFn = (route, state) => {
-  const storageService = inject(StorgeService);
+  const storageService = inject(StorageService);
   const router = inject(Router);
 
   if (storageService.isManager()) {
