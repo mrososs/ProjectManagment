@@ -5,6 +5,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -12,11 +14,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   declarations: [
     DashboardComponent,
     NavbarComponent ,
-    SidebarComponent
+    SidebarComponent,
+    HomepageComponent
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    SharedModule
   ]
 })
 export class DashboardModule { }

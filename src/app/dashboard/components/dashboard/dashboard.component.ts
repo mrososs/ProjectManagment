@@ -12,10 +12,10 @@ export class DashboardComponent implements OnInit {
   constructor(private _storgeService: StorgeService, private _router: Router) {}
 
   ngOnInit(): void {
-    if (this._storgeService.isEmployee()) {
-      this._router.navigate(['/dashboard/manager']);
-    } else if (this._storgeService.isManager()) {
-      this._router.navigate(['/dashboard/manager']);
-    }
+    // if (this._storgeService.isEmployee()) {
+    //   this._router.navigate(['/dashboard/manager']);
+    // } else if (this._storgeService.isManager()) {
+    //   this._router.navigate(['/dashboard/manager']);
+    // }
   }
 }
