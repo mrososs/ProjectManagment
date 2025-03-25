@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 @Injectable({
   providedIn: 'root',
 })
-export class StorgeService {
+export class StorageService {
   private userRole: string | null = null; // Store user role
 
   constructor() {
