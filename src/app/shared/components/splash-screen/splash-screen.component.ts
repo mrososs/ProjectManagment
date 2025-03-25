@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../auth/services/auth.service';
 import { Router } from '@angular/router';
+import { StorgeService } from '../../../core/services/storge.service';
 
 @Component({
   selector: 'app-splash-screen',
@@ -28,7 +28,7 @@ import { Router } from '@angular/router';
 })
 export class SplashScreenComponent implements OnInit {
   animationState = false;
-  constructor(private _authService: AuthService, private router: Router) {}
+  constructor(private _storgeService: StorgeService, private router: Router) {}
   ngOnInit(): void {
     setTimeout(() => {
       this.animationState = true;
@@ -38,8 +38,16 @@ export class SplashScreenComponent implements OnInit {
     }, 7000); // Adjust time based on animation duration
   }
   private redirectUser() {
-    if (this._authService.isLoggedIn()) {
-      this.router.navigate(['/dashboard']); // Redirect to Dashboard if logged in
+    if (this._storgeService.isLoggedIn()) {
+      const role = this._storgeService.getUserRole(); // Get role from storage
+
+      if (role === 'Employee') {
+        this.router.navigate(['/dashboard/employee']); // Redirect to Employee Dashboard
+      } else if (role === 'Manager') {
+        this.router.navigate(['/dashboard/manager']); // Redirect to Manager Dashboard
+      } else {
+        this.router.navigate(['/auth']); // Fallback if role is unknown
+      }
     } else {
       this.router.navigate(['/auth']); // Redirect to Auth if not logged in
     }
