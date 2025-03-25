@@ -1,0 +1,44 @@
+<section class="homepage">
+  <div class="container h-100">
+    <div class="welcome mt-3">
+      <div class="">
+        <h1>Welcome <span>Upskilling</span></h1>
+        <h2>You can add project and assign tasks to your team</h2>
+      </div>
+    </div>
+    <div class="mt-2">
+      <div
+        class="d-flex justify-content-start gap-5 align-items-center flex-nowrap flex-sm-wrap flex-lg-nowrap flex-md-nowrap"
+      >
+        <mat-card appearance="outlined" class="position-relative w-50">
+          <div class="border-line position-absolute"></div>
+          <mat-card-header>
+            <mat-card-title>Tasks</mat-card-title>
+            <mat-card-subtitle
+              >Lorem ipsum dolor sit amet,consecteture</mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <canvasjs-chart [options]="chartOptions"></canvasjs-chart
+          ></mat-card-content>
+        </mat-card>
+        <mat-card
+          *ngIf="!isEmployee"
+          appearance="outlined"
+          class="position-relative w-50"
+        >
+          <div class="border-line position-absolute"></div>
+          <mat-card-header>
+            <mat-card-title>Users</mat-card-title>
+            <mat-card-subtitle
+              >Lorem ipsum dolor sit amet,consecteture</mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <canvasjs-chart [options]="userChartOptions"></canvasjs-chart>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>

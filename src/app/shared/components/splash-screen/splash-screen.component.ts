@@ -42,9 +42,9 @@ export class SplashScreenComponent implements OnInit {
       const role = this._storgeService.getUserRole(); // Get role from storage
 
       if (role === 'Employee') {
-        this.router.navigate(['/dashboard/employee']); // Redirect to Employee Dashboard
+        this.router.navigate(['/dashboard']); // Redirect to Employee Dashboard
       } else if (role === 'Manager') {
-        this.router.navigate(['/dashboard/manager']); // Redirect to Manager Dashboard
+        this.router.navigate(['/dashboard']); // Redirect to Manager Dashboard
       } else {
         this.router.navigate(['/auth']); // Fallback if role is unknown
       }
