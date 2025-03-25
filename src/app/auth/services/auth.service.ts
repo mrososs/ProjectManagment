@@ -14,9 +14,7 @@ export class AuthService {
   // onChangingPassword():Observable<any>{
   //   return this._HttpClient.put(`https://upskilling-egypt.com:3003/api/v1/Users/ChangePassword`   )
   // }
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('token'); // Example: Check if token exists
-  }
+
   register(data: any): Observable<any> {
     return this._HttpClient.post('Users/Register', data);
   }

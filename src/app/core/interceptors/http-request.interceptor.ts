@@ -4,45 +4,43 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 const BASE_URL = 'https://upskilling-egypt.com:3003/api/v1';
 
 export const httpRequestInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router); // Inject Router for navigation
-  const token = localStorage.getItem('userToken') ;
+  const toaster = inject(ToastrService); // Inject ToastrService for notifications
+  const token = localStorage.getItem('token');
 
   if (!req.url.startsWith('http')) {
-    req = req.clone({ url: `${BASE_URL}/${req.url}` ,
-      setHeaders:{Authorization: `Bearer ${token}` }  });
+    req = req.clone({
+      url: `${BASE_URL}/${req.url}`,
+      setHeaders: { Authorization: `Bearer ${token}` },
+    });
   }
 
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       switch (error.status) {
         case 400:
-          console.error('Bad Request:', error.error);
-          alert('Bad request! Please check your input.');
+          toaster.error('Bad request! Please check your input.');
           break;
         case 401:
-          console.error('Unauthorized:', error.error);
-          alert('Unauthorized! Please log in again.');
+          toaster.error('Unauthorized! Please log in again.');
           router.navigate(['/auth/login']); // Redirect to login
           break;
         case 403:
-          console.error('Forbidden:', error.error);
-          alert('Access Denied! You do not have permission.');
+          toaster.error('Access Denied! You do not have permission.');
           break;
         case 404:
-          console.error('Not Found:', error.error);
-          alert('Resource not found!');
+          toaster.error('Resource not found!', error.error.message);
           break;
         case 500:
-          console.error('Internal Server Error:', error.error);
-          alert('Server error! Please try again later.');
+          toaster.error('Server error! Please try again later.');
           break;
         default:
-          console.error('Unknown Error:', error.error);
-          alert('An unexpected error occurred.');
+          toaster.error('An unexpected error occurred.', error.error);
       }
 
       return throwError(() => error);
