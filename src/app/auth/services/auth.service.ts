@@ -26,10 +26,7 @@ export class AuthService {
     return this._HttpClient.put('Users/verify', data);
   }
   onResetPassword(UserParams: any): Observable<any> {
-    return this._HttpClient.post(
-      `https://upskilling-egypt.com:3003/api/v1/Users/Reset`,
-      { params: UserParams }
-    );
+    return this._HttpClient.post(`Users/Reset/Request`, UserParams );
   }
   login(user: ILogin): Observable<ILogin> {
     return this._HttpClient.post<ILogin>(`Users/Login`, user);
