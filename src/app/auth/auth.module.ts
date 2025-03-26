@@ -10,6 +10,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VerifyComponent } from './components/verify/verify.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
+
 
 @NgModule({
   declarations: [
@@ -19,13 +21,15 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
     LoginPageComponent,
     RegisterComponent,
     VerifyComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxFileDropModule
     ],
 })
 export class AuthModule {}

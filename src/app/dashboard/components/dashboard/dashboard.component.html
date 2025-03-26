@@ -1,9 +1,17 @@
-<p>dashboard works!</p>
+<div class="row">
+  <div class="col-12">
+    <app-navbar></app-navbar>
+  </div>
 
+  <div
+    [ngClass]="{ 'col-3': !isSidebarCollapsed, 'col-1': isSidebarCollapsed }"
+  >
+    <app-sidebar (collapsedChange)="toggleSidebar($event)"></app-sidebar>
+  </div>
 
-<div class=" w-75 m-auto py-5">
- 
-  <app-custom-table></app-custom-table>
-
-
+  <div
+    [ngClass]="{ 'col-9': !isSidebarCollapsed, 'col-11': isSidebarCollapsed }"
+  >
+    <router-outlet></router-outlet>
+  </div>
 </div>

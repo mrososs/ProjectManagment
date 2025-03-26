@@ -9,6 +9,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
 
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const MaterialComponents = [
   CommonModule,
@@ -22,6 +24,8 @@ const MaterialComponents = [
 
 
 
+  MatTooltipModule,
+  MatCardModule,
 ];
 
 @NgModule({
@@ -29,9 +33,9 @@ const MaterialComponents = [
 
   imports: [
     CommonModule,
-     MaterialComponents,
+    MaterialComponents,
     //  MaterialFileInputModule
-    ],
+  ],
   exports: [MaterialComponents],
 })
 export class MaterialModule {}

@@ -22,3 +22,13 @@ export interface ILogin{
   password:string;
   token?:string;
 }
+export interface IUpdateUserData {
+  id?: number;
+  userName: string;
+  email: string;
+  country: string;
+  phoneNumber: string;
+  imagePath?: string;
+  confirmPassword: string;
+
+}

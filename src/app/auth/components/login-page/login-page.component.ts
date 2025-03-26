@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { StorgeService } from '../../../core/services/storge.service';
+import { StorageService } from '../../../core/services/storage.service';
 
 @Component({
   selector: 'app-login-page',
@@ -15,7 +15,7 @@ export class LoginPageComponent {
     private _AuthService: AuthService,
     private _toaster: ToastrService,
     private _router: Router,
-    private _storgeService: StorgeService
+    private _storageService: StorageService
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
@@ -33,9 +33,16 @@ export class LoginPageComponent {
         localStorage.setItem('token', res.token);
       },
       complete: () => {
-        this._storgeService.loadUserRole();
+        this._storageService.loadUserRole();
         setTimeout(()=>{
-          this._router.navigate(['/dashboard']);
+          const role = this._storageService.getUserRole(); // Get role from storage
+          if (role === 'Employee') {
+            this._router.navigate(['/dashboard/employee']); // Redirect to Employee Dashboard
+          } else if (role === 'Manager') {
+            this._router.navigate(['/dashboard/manager']); // Redirect to Manager Dashboard
+          } else {
+            this._router.navigate(['/auth']); // Fallback if role is unknown
+          }
         },2000)
       },
     });

@@ -2,9 +2,19 @@
 @import "backgrounds";
 @import "shared";
 @import "login-page";
+@import "add-edit";
 @import "splash";
+@import "navbar";
+@import "register";
+@import "profile";
+@import "homepage";
 * {
   font-family: "inter", sans-serif;
+}
+body {
+  background-color: $background;
+  height: 100%;
+  overflow-x: hidden;
 }
 a {
   text-decoration: none;
