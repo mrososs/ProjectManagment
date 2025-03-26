@@ -17,15 +17,34 @@
       overflow: hidden;
     }
   }
-  table{
-    thead{
-        tr{
-            th{
-                background-color: #315951;
-                color: white;
-                border-right: 1px solid white;
-            }
+
+  table {
+    width: 100%;
+
+    thead {
+      tr {
+        th {
+          background-color: #315951;
+          color: white;
+          border-right: 1px solid white;
         }
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(odd) {
+          background-color: white;
+        }
+
+        &:nth-child(even) {
+          background-color: rgba(245, 245, 245, 1);
+        }
+
+        td {
+          padding: 10px; // Adjust padding as needed
+        }
+      }
     }
   }
 }
