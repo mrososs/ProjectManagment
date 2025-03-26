@@ -57,16 +57,3 @@ $input-bg: #fff;
         background: $border-color !important;
     }
 }
-.shared-save-button {
-    background-color: $primary-color !important;
-    color: white !important;
-    padding: 8px 24px;
-    border-radius: 20px !important;
-    font-weight: 500;
-    font-size: 14px;
-    text-transform: none;
-    transition: 0.5s;
-    &:hover {
-        background-color: $primary-hover !important;
-    }
-}
