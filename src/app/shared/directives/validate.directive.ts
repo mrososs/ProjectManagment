@@ -3,6 +3,7 @@ import { AbstractControl } from '@angular/forms';
 
 @Directive({
   selector: '[pmValidate]',
+  standalone:false ,
 })
 export class ValidateDirective implements AfterViewInit {
   @Input('pmValidate') control!: AbstractControl; // Get control from Input

@@ -15,6 +15,8 @@ import { ValidateDirective } from './directives/validate.directive';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { NgxFileDropModule } from 'ngx-file-drop';
+import { CustomTableComponent } from './components/custom-table/custom-table.component';
+
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
     FilePreviewComponent,
     ValidateDirective,
     SplashScreenComponent,
+    CustomTableComponent
   ],
   imports: [
     CommonModule,
@@ -33,6 +36,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
     MaterialModule,
     RouterModule,
     NgxFileDropModule
+
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
   exports: [
@@ -45,8 +49,8 @@ import { NgxFileDropModule } from 'ngx-file-drop';
     FormsModule,
     RouterModule,
     CustomFormFieldComponent,
-    NgxFileDropModule
-
+    NgxFileDropModule,
+    CustomTableComponent
   ],
 })
 export class SharedModule {}

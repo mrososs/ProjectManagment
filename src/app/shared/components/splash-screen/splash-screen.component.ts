@@ -6,6 +6,7 @@ import { StorageService } from '../../../core/services/storage.service';
 @Component({
   selector: 'app-splash-screen',
   templateUrl: './splash-screen.component.html',
+  standalone:false ,
   styleUrl: './splash-screen.component.scss',
   animations: [
     trigger('fadeIn', [

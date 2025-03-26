@@ -27,8 +27,8 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'profile/:id/:formDisabled', component: ProfileComponent }, 
-  { path: 'profile/:id', component: ProfileComponent }, 
+  { path: 'profile/:id/:formDisabled', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent },
 ];
 
 @NgModule({
