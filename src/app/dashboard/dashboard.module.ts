@@ -17,7 +17,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { NgxFileDropModule } from 'ngx-file-drop';
+import { NgxFileDropModule } from 'ngx-file-drop';
 
 
 @NgModule({
@@ -41,7 +41,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatMenuModule,
     MatBadgeModule,
     ReactiveFormsModule,
-    // NgxFileDropModule,
+    NgxFileDropModule,
     SharedModule,
   ],
 })

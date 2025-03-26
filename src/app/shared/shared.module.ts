@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 import { FilePreviewComponent } from './components/file-preview/file-preview.component';
 import { ValidateDirective } from './directives/validate.directive';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
-// import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { CustomTableComponent } from './components/custom-table/custom-table.component';
 
 
@@ -29,7 +29,7 @@ import { CustomTableComponent } from './components/custom-table/custom-table.com
   imports: [
     CommonModule,
     FormsModule,
-    // CanvasJSAngularChartsModule, // Import CanvasJS Module
+    CanvasJSAngularChartsModule, // Import CanvasJS Module
 
     ReactiveFormsModule,
     MaterialModule,
@@ -39,7 +39,7 @@ import { CustomTableComponent } from './components/custom-table/custom-table.com
   providers: [provideHttpClient(withInterceptorsFromDi())],
   exports: [
     MaterialModule,
-    // CanvasJSAngularChartsModule, // Import CanvasJS Module
+    CanvasJSAngularChartsModule, // Import CanvasJS Module
     SplashScreenComponent,
     ValidateDirective,
     FilePreviewComponent,
