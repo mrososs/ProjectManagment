@@ -25,7 +25,7 @@ export class SidebarComponent implements OnInit {
     {
       name: 'Projects',
       icon: 'grid_view',
-      route: 'admin/recipes',
+      route: 'manager/projects',
       isAdmin: true,
     },
     {
