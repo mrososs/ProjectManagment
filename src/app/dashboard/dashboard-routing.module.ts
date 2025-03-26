@@ -3,7 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { managerGuard } from '../core/guards/manager.guard';
 import { employeeGuard } from '../core/guards/employee.guard';
+<<<<<<< HEAD
+import { ProfileComponent } from './components/profile/profile.component';
+=======
 import { HomepageComponent } from './components/homepage/homepage.component';
+>>>>>>> main
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,6 +30,8 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'profile/:id/:formDisabled', component: ProfileComponent }, 
+  { path: 'profile/:id', component: ProfileComponent }, 
 ];
 
 @NgModule({
