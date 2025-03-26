@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 mx-auto">
-                <form [formGroup]="addEditForm">
+                <form [formGroup]="addEditForm" (ngSubmit)="sendData(addEditForm)">
                     <div class="shared-card">
                         <div class="custom-form-field" appearance="outline">
                             <label class="shared-title">Title</label>
@@ -21,8 +21,8 @@
                             <textarea  formControlName="description" id="description" class="custom-input" placeholder="Enter Description"></textarea>
                         </div>
                         <div class="shared-actions">
-                            <a type="button" class="shared-cancel-button">Cancel</a>
-                            <a type="button" class="shared-save-button">Save</a>
+                            <a type="button" routerLink="/dashboard/manager/projects" class="shared-cancel-button">Cancel</a>
+                            <button type="submit" class="shared-save-button">Save</button>
                         </div>
                     </div>      
                 </form>          
