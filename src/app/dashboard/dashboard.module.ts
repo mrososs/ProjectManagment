@@ -5,6 +5,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SharedModule } from '../shared/shared.module';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 
@@ -17,7 +18,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxFileDropModule } from 'ngx-file-drop';
-import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    DashboardRoutingModule ,
+    SharedModule ,
     DashboardRoutingModule,
     MatToolbarModule,
     MatSidenavModule,

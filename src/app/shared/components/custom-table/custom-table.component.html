@@ -1,0 +1,72 @@
+<div class="row p-5 table-container ">
+
+  <div class="table-layout  shadow rounded p-4 pb-2 bg-white">
+
+    <div class="search-area py-2 w-50">
+      <div class="input-group mb-3">
+        <span class="input-group-text rounded-start-pill border-end-0 bg-transparent" id="basic-addon1">
+          <i class="fa-solid fa-search"></i>
+        </span>
+        <input type="text" [(ngModel)]="searchTerm"
+        class="form-control rounded-end-pill border-start-0"
+        placeholder="search.."
+        aria-label="Username"
+        aria-describedby="basic-addon1">
+      </div>
+
+
+    </div>
+
+  <table class=" table table-striped  pb-0">
+
+    <thead class="text-white  text-capitalize">
+      <th *ngFor="let header of headers" >  <!-- change based on --- projects / tasks/ users -->
+        <div class=" py-2 d-flex align-items-center  text-white bg-transparent" >
+         <span class="text-white bg-transparent my-1 me-1">{{header}}</span>
+         <mat-icon class="th-icon" >unfold_more</mat-icon>
+        </div>
+      </th>
+      <th class="col-1"> Action </th> <!-- Static column for the menu dropdown -->
+    </thead>
+
+    <tbody>
+      <tr    *ngFor="let row of data"   class=" align-baseline" >
+      <td *ngFor="let col of row">{{ col }}</td>
+         <!-- Dropdown menu for actions -->
+        <td >
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon >more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" >
+            <button mat-menu-item>
+              <mat-icon>dialpad</mat-icon>
+              <span>Redial</span>
+            </button>
+            <button mat-menu-item >
+              <mat-icon>visibility</mat-icon>
+              <span>View</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>delete</mat-icon>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+
+
+    </tbody>
+
+  </table>
+
+  <mat-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[5, 10, 15]"
+              aria-label="Select page"
+              (page)="handlePageEvent($event)">
+  </mat-paginator>
+
+  </div>
+
+
+</div>
