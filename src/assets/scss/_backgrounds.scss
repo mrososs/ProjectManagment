@@ -2,7 +2,6 @@
   background-image: url("../img/Rectangle.png");
   position: relative; /* Add this to establish stacking context */
 }
-
 .text {
   position: absolute;
   z-index: 111;

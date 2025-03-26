@@ -3,10 +3,11 @@
 @import "shared";
 @import "login-page";
 @import "splash";
+@import "homepage";
 * {
   font-family: "inter", sans-serif;
 }
-body {
+body{
   background-color: $background;
 }
 a {

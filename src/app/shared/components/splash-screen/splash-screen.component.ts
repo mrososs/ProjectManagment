@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StorageService } from '../../../core/services/storage.service';
+import { StorgeService } from '../../../core/services/storge.service';
 
 @Component({
   selector: 'app-splash-screen',
@@ -28,7 +28,7 @@ import { StorageService } from '../../../core/services/storage.service';
 })
 export class SplashScreenComponent implements OnInit {
   animationState = false;
-  constructor(private _storageService: StorageService, private router: Router) {}
+  constructor(private _storgeService: StorgeService, private router: Router) {}
   ngOnInit(): void {
     setTimeout(() => {
       this.animationState = true;
@@ -38,8 +38,8 @@ export class SplashScreenComponent implements OnInit {
     }, 7000); // Adjust time based on animation duration
   }
   private redirectUser() {
-    if (this._storageService.isLoggedIn()) {
-      const role = this._storageService.getUserRole(); // Get role from storage
+    if (this._storgeService.isLoggedIn()) {
+      const role = this._storgeService.getUserRole(); // Get role from storage
 
       if (role === 'Employee') {
         this.router.navigate(['/dashboard']); // Redirect to Employee Dashboard

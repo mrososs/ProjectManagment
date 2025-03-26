@@ -3,7 +3,7 @@ import { DashboardService } from '../../services/dashboard.service';
 import { ITasks } from '../../../core/interfaces/tasks';
 import { IUsersChart } from '../../../core/interfaces/users';
 import { forkJoin } from 'rxjs';
-import { StorageService } from '../../../core/services/storage.service';
+import { StorgeService } from '../../../core/services/storge.service';
 
 @Component({
   selector: 'app-homepage',
@@ -41,10 +41,7 @@ export class HomepageComponent implements OnInit {
   userCount!: IUsersChart;
   isEmployee!: boolean;
 
-  constructor(
-    private _dashboardService: DashboardService,
-    private _storgeService: StorageService
-  ) {}
+  constructor(private _dashboardService: DashboardService,private _storgeService:StorgeService) {}
 
   ngOnInit(): void {
     this.isEmployee = this._storgeService.isEmployee();
