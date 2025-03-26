@@ -2,13 +2,16 @@
   <div class="col-12">
     <app-navbar></app-navbar>
   </div>
-  <div class="col-3">
-    <app-sidebar
-      (collapsedChange)="onSidebarCollapsedChange($event)"
-    ></app-sidebar>
+
+  <div
+    [ngClass]="{ 'col-3': !isSidebarCollapsed, 'col-1': isSidebarCollapsed }"
+  >
+    <app-sidebar (collapsedChange)="toggleSidebar($event)"></app-sidebar>
   </div>
-  <div class="col">
+
+  <div
+    [ngClass]="{ 'col-9': !isSidebarCollapsed, 'col-11': isSidebarCollapsed }"
+  >
     <router-outlet></router-outlet>
   </div>
 </div>
-
