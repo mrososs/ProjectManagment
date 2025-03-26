@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { managerGuard } from '../core/guards/manager.guard';
 import { employeeGuard } from '../core/guards/employee.guard';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -18,6 +19,8 @@ const routes: Routes = [
       import('./employee/employee.module').then((m) => m.EmployeeModule),
     canActivate: [employeeGuard],
   },
+  { path: 'profile/:id/:formDisabled', component: ProfileComponent }, 
+  { path: 'profile/:id', component: ProfileComponent }, 
 ];
 
 @NgModule({
