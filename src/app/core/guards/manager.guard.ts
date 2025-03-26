@@ -9,7 +9,7 @@ export const managerGuard: CanActivateFn = (route, state) => {
   if (storageService.isManager()) {
     return true;
   } else {
-    router.navigate(['/dashboard']); // Redirect unauthorized users
+    router.navigate(['/auth']); // Redirect unauthorized users
     return false;
   }
 };

@@ -1,0 +1,47 @@
+<section class="bg-light vh-100">
+<div class="header-page bg-white p-4 mb-4">
+    <a routerLink="/dashboard/manager/tasks" class="d-flex align-items-center text-dark">
+        <mat-icon>chevron_left</mat-icon>
+        <span>view all Tasks</span>
+    </a>
+    <h2 class="mt-2 mb-0">Add a New Task</h2>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <form [formGroup]="addEditForm">
+                <div class="shared-card">
+                    <div class="custom-form-field" appearance="outline">
+                        <label class="shared-title">Title</label>
+                        <input formControlName="title" type="text" id="name" class="custom-input" placeholder="Enter Name">
+                    </div>      
+                    <div class="custom-form-field" appearance="outline">
+                        <label class="shared-title">Description</label>
+                        <textarea  formControlName="description" id="description" class="custom-input" placeholder="Enter Description"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <mat-form-field class="w-50">
+                            <mat-label class="shared-title">User</mat-label>
+                            <mat-select>
+                              <mat-option value="one">First option</mat-option>
+                              <mat-option value="two">Second option</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="w-50 ms-4">
+                            <mat-label class="shared-title">Project</mat-label>
+                            <mat-select>
+                              <mat-option value="one">First option</mat-option>
+                              <mat-option value="two">Second option</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="shared-actions">
+                        <a type="button" class="shared-cancel-button">Cancel</a>
+                        <a type="button" class="shared-save-button">Save</a>
+                    </div>
+                </div>      
+            </form>          
+        </div>
+    </div>
+</div>
+</section>

@@ -1,7 +1,12 @@
 .navbar {
+    .logo{
+        img{
+            
+        }
+    }
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 0 $font-16;
     background-color: $nav-bg !important;
     box-shadow: 0px $font-1 $font-4 0px rgba(0, 0, 0, 0.15);

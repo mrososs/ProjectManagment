@@ -35,7 +35,14 @@ export class LoginPageComponent {
       complete: () => {
         this._storageService.loadUserRole();
         setTimeout(()=>{
-          this._router.navigate(['/dashboard']);
+          const role = this._storageService.getUserRole(); // Get role from storage
+          if (role === 'Employee') {
+            this._router.navigate(['/dashboard/employee']); // Redirect to Employee Dashboard
+          } else if (role === 'Manager') {
+            this._router.navigate(['/dashboard/manager']); // Redirect to Manager Dashboard
+          } else {
+            this._router.navigate(['/auth']); // Fallback if role is unknown
+          }
         },2000)
       },
     });
