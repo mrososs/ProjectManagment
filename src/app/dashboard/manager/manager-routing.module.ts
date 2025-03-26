@@ -5,7 +5,8 @@ import { AddEditComponent } from './projects/components/add-edit/add-edit.compon
 
 const routes: Routes = [
   { path: '', component: ManagerComponent },
-  { path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) }];
+  { path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) },
+  { path: 'tasks', loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule) }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

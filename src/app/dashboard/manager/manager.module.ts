@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
 import { ManagerRoutingModule } from './manager-routing.module';
 import { ManagerComponent } from './manager.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -12,7 +12,7 @@ import { ManagerComponent } from './manager.component';
   imports: [
     CommonModule,
     ManagerRoutingModule,
-    MatIconModule
+    SharedModule
   ]
 })
 export class ManagerModule { }

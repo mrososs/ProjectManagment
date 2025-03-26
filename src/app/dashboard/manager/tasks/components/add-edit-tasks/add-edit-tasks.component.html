@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 mx-auto">
-                <form [formGroup]="addEditForm">
+                <form class="w-100">
                     <div class="shared-card">
                         <div class="custom-form-field" appearance="outline">
                             <label class="shared-title">Title</label>
@@ -21,8 +21,8 @@
                             <textarea  formControlName="description" id="description" class="custom-input" placeholder="Enter Description"></textarea>
                         </div>
                         <div class="shared-actions">
-                            <a type="button" class="shared-cancel-button">Cancel</a>
-                            <a type="button" class="shared-save-button">Save</a>
+                            <a type="button" mat-button mat-dialog-close class="shared-cancel-button">Cancel</a>
+                            <a type="button" mat-raised-button class="shared-save-button">Save</a>
                         </div>
                     </div>      
                 </form>          

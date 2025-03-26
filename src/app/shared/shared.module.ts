@@ -1,19 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
-// import { ToastrModule } from 'ngx-toastr';
-
-
+import { provideHttpClient,withInterceptorsFromDi,} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormFieldComponent } from './components/custom-form-field/custom-form-field.component';
 import { RouterModule } from '@angular/router';
 import { FilePreviewComponent } from './components/file-preview/file-preview.component';
 import { ValidateDirective } from './directives/validate.directive';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [CustomFormFieldComponent, FilePreviewComponent,ValidateDirective,SplashScreenComponent],
@@ -23,6 +18,7 @@ import { SplashScreenComponent } from './components/splash-screen/splash-screen.
     ReactiveFormsModule,
     MaterialModule,
     RouterModule,
+    MatCardModule,
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
   exports: [
