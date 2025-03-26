@@ -1,1 +1,38 @@
-<p>sidebar works!</p>
+<section [class.collapsed]="isCollapsed" class="h-100">
+  <div class="side__bar position-relative">
+    <div class="position-absolute icon " (click)="toggleSidebar()">
+      <mat-icon style="color: white; background-color: #ef9b28">
+        {{
+          isCollapsed ? "keyboard_arrow_right" : "keyboard_arrow_left"
+        }}</mat-icon
+      >
+    </div>
+
+    <div class="mt-5">
+      <ul>
+        <li *ngFor="let item of menuList">
+          <a
+            *ngIf="item.route; else noRoute"
+            [routerLink]="[item.route]"
+            routerLinkActive="active"
+            [matTooltip]="isCollapsed ? item.name : ''"
+            [matTooltipPosition]="'right'"
+          >
+            <mat-icon>{{ item.icon }}</mat-icon>
+            <h4>{{ item.name }}</h4>
+          </a>
+          <ng-template #noRoute>
+            <a
+              href="javascript:void(0)"
+              [matTooltip]="isCollapsed ? item.name : ''"
+              [matTooltipPosition]="'right'"
+            >
+              <mat-icon>{{ item.icon }}</mat-icon>
+              <h4>{{ item.name }}</h4>
+            </a>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
