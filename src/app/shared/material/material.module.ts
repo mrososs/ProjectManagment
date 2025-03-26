@@ -9,7 +9,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
 
 
-
 const MaterialComponents = [
   CommonModule,
   MatIconModule,

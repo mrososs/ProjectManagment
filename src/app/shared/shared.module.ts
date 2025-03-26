@@ -1,19 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
-// import { ToastrModule } from 'ngx-toastr';
-
+import { provideHttpClient,withInterceptorsFromDi,} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormFieldComponent } from './components/custom-form-field/custom-form-field.component';
 import { RouterModule } from '@angular/router';
 import { FilePreviewComponent } from './components/file-preview/file-preview.component';
 import { ValidateDirective } from './directives/validate.directive';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
-import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 @NgModule({
   declarations: [
@@ -25,7 +19,6 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
   imports: [
     CommonModule,
     FormsModule,
-    CanvasJSAngularChartsModule, // Import CanvasJS Module
 
     ReactiveFormsModule,
     MaterialModule,
@@ -34,7 +27,6 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
   providers: [provideHttpClient(withInterceptorsFromDi())],
   exports: [
     MaterialModule,
-    CanvasJSAngularChartsModule, // Import CanvasJS Module
     SplashScreenComponent,
     ValidateDirective,
     FilePreviewComponent,
