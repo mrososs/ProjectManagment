@@ -3,9 +3,17 @@
 @import "shared";
 @import "login-page";
 @import "splash";
+<<<<<<< HEAD
 @import "add-edit";
+=======
+@import "navbar";
+@import "homepage";
+>>>>>>> origin/main
 * {
   font-family: "inter", sans-serif;
+}
+body {
+  background-color: $background;
 }
 a {
   text-decoration: none;
