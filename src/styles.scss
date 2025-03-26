@@ -4,9 +4,20 @@
 @import "assets/scss/backgrounds";
 @import "assets/scss/shared";
 @import "assets/scss/variables";
-@import "assets/scss/add-edit";
 
-
-
-
-
+.notification-btn .mat-badge-content {
+    font-size: 10px !important;
+    width: 16px !important;
+    height: 16px !important;
+    line-height: 16px !important;
+    background-color: #ff9800 !important;
+    color: white !important;
+    top: 26px !important;
+    left: 39px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 2px solid white !important;
+    z-index: 9;
+  }
+  

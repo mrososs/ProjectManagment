@@ -3,12 +3,15 @@
 @import "shared";
 @import "login-page";
 @import "splash";
+@import "navbar";
 @import "homepage";
 * {
   font-family: "inter", sans-serif;
 }
-body{
+body {
   background-color: $background;
+  height: 100%;
+  overflow-x: hidden;
 }
 a {
   text-decoration: none;
