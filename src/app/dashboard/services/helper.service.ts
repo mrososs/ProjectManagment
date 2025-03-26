@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../../core/interfaces/user';
+import { IUpdateUserData, User } from '../../core/interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,13 @@ export class HelperService {
       Authorization: `Bearer ${token}`
     });
     return this.http.get<User>(`Users/currentUser`, { headers });
+  }
+  updateUser(data:FormData):Observable<IUpdateUserData>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.put<IUpdateUserData>(`Users`, data , {headers});
   }
   updateProfileImage(imagePath: string) {
     if (this.profileImageSource.getValue() !== imagePath) {

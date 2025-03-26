@@ -1,0 +1,50 @@
+.projects {
+  height: 100vh;
+
+  h1 {
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .table-container {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .mat-mdc-form-field {
+    .mat-mdc-form-field-outline {
+      border-radius: 20px !important;
+      overflow: hidden;
+    }
+  }
+
+  table {
+    width: 100%;
+
+    thead {
+      tr {
+        th {
+          background-color: #315951;
+          color: white;
+          border-right: 1px solid white;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(odd) {
+          background-color: white;
+        }
+
+        &:nth-child(even) {
+          background-color: rgba(245, 245, 245, 1);
+        }
+
+        td {
+          padding: 10px; // Adjust padding as needed
+        }
+      }
+    }
+  }
+}

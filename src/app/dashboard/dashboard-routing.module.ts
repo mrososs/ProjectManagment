@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { managerGuard } from '../core/guards/manager.guard';
 import { employeeGuard } from '../core/guards/employee.guard';
+import { ProfileComponent } from './components/profile/profile.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 
 const routes: Routes = [
@@ -26,6 +27,8 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'profile/:id/:formDisabled', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent },
 ];
 
 @NgModule({
