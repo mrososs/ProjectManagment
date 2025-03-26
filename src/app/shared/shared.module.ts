@@ -14,15 +14,20 @@ import { RouterModule } from '@angular/router';
 import { FilePreviewComponent } from './components/file-preview/file-preview.component';
 import { ValidateDirective } from './directives/validate.directive';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
+import { CustomTableComponent } from './components/custom-table/custom-table.component';
+
 
 @NgModule({
-  declarations: [CustomFormFieldComponent, FilePreviewComponent,ValidateDirective,SplashScreenComponent],
+  declarations: [CustomFormFieldComponent, FilePreviewComponent,ValidateDirective,SplashScreenComponent ,
+    CustomTableComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
     RouterModule,
+
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
   exports: [
@@ -34,6 +39,7 @@ import { SplashScreenComponent } from './components/splash-screen/splash-screen.
     FormsModule,
     RouterModule,
     CustomFormFieldComponent,
+    CustomTableComponent
   ],
 })
 export class SharedModule {}

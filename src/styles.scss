@@ -5,7 +5,96 @@
 @import "assets/scss/shared";
 @import "assets/scss/variables";
 
+$primary-color: #ef9b28;
+$secondary-color: #0E382F;
+
+.table-container{
+  background-color: #f2f2f2;
+}
+
+.th-icon{
+  background-color: transparent !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 2px 0 !important;
+  text-align: center !important;
+}
 
 
+table {
+  tbody{
+    tr{
+      // color: #ef9b28 !important;
+      font-weight: $reg-font;
+      font-size: $font-12;
+      td{
+        font-family: Montserrat;
+       font-weight: $reg-font;
+       font-size: $font-14;
+      color: #4F4F4F!important;
+      // padding: .8rem 0 !important;
+      }
+    }
+  }
+
+
+thead{
+background-color: #315951E5 !important;
+border-left: 1.3px solid #315951E5 !important;
+border-right: 1.3px solid #315951E5 !important;
+th{
+ border: 1.3px solid #315951E5;
+ font-family: Montserrat !important;
+font-weight:lighter !important;
+font-size: 1.1rem;
+}
+}
+
+
+}
+// ----------------
+// Menu
+
+.mat-mdc-menu-item .mat-icon-no-color ,
+ .mat-mdc-menu-item .mat-mdc-menu-submenu-icon ,
+  .mat-mdc-menu-content, .mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text  {
+  font-size: $font-16 !important;
+  color: #4F4F4F !important;
+}
+
+
+// -------------------------------
+button{
+font-weight: $reg-font;
+font-size: $font-12;
+color: #fff;
+border: none;
+border-radius: 1rem;
+padding: .375rem .875rem;
+&:hover{
+  opacity: .7;
+}
+}
+.primary-btn{
+background-color: #315951E5;
+}
+.secondary-btn{
+  background-color: #EF9B28A3;
+}
+.done-active-btn{
+  background-color: #009247;
+}
+.inProgress-btn{
+  background-color: #EF9B28A3;
+}
+.toDo-btn{
+  background-color: #E4E1F5;
+}
+.not-active-btn{
+  background-color:  #922E25B2;
+}
+
+// -----------------
 
 
