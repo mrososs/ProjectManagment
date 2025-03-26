@@ -39,9 +39,12 @@ export class HomepageComponent implements OnInit {
 
   taskCount!: ITasks;
   userCount!: IUsersChart;
-  isEmployee!:boolean;
+  isEmployee!: boolean;
 
-  constructor(private _dashboardService: DashboardService,private _storgeService:StorageService) {}
+  constructor(
+    private _dashboardService: DashboardService,
+    private _storgeService: StorageService
+  ) {}
 
   ngOnInit(): void {
     this.isEmployee = this._storgeService.isEmployee();
