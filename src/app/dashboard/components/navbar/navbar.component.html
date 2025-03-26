@@ -17,10 +17,9 @@
   <div class="user-info">
     <img [src]="user?.imagePath || defaultImage" alt="User" class="avatar" />
     <div class="user-details">
-      <span class="username me-3">{{ user?.userName || "Upskilling" }}</span>
-      <span class="email">{{ user?.email || "upskilling@gmail.com" }}</span>
+      <span class="hidden username me-3">{{ user?.userName || "Upskilling" }}</span>
+      <span class="hidden email">{{ user?.email || "upskilling@gmail.com" }}</span>
     </div>
-<<<<<<< HEAD
   
     <mat-menu #userMenu="matMenu">
       <button [routerLink]="['/dashboard/profile/', user?.id, true]" mat-menu-item>
@@ -30,9 +29,8 @@
         <mat-icon>exit_to_app</mat-icon> Logout
       </button>
     </mat-menu>
-  </mat-toolbar>
   
-=======
+  
     <button class="arrow" mat-icon-button [matMenuTriggerFor]="userMenu">
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
@@ -44,4 +42,3 @@
   </mat-menu>
   </div>
 </mat-toolbar>
->>>>>>> main

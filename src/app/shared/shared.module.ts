@@ -14,6 +14,8 @@ import { FilePreviewComponent } from './components/file-preview/file-preview.com
 import { ValidateDirective } from './directives/validate.directive';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { NgxFileDropModule } from 'ngx-file-drop';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     ReactiveFormsModule,
     MaterialModule,
     RouterModule,
+    NgxFileDropModule
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
   exports: [
@@ -42,6 +45,8 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     FormsModule,
     RouterModule,
     CustomFormFieldComponent,
+    NgxFileDropModule
+
   ],
 })
 export class SharedModule {}

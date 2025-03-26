@@ -1,17 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-<<<<<<< HEAD
 import { ProfileComponent } from './components/profile/profile.component';
-=======
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { SharedModule } from '../shared/shared.module';
->>>>>>> main
-
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,7 +14,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgxFileDropModule } from 'ngx-file-drop';
 import { SharedModule } from "../shared/shared.module";
 
 
@@ -28,15 +21,10 @@ import { SharedModule } from "../shared/shared.module";
 @NgModule({
   declarations: [
     DashboardComponent,
-<<<<<<< HEAD
     NavbarComponent ,
     SidebarComponent,
-    ProfileComponent
-=======
-    NavbarComponent,
-    SidebarComponent,
-    HomepageComponent,
->>>>>>> main
+    ProfileComponent,
+    HomepageComponent
   ],
   imports: [
     CommonModule,
@@ -48,14 +36,8 @@ import { SharedModule } from "../shared/shared.module";
     MatListModule,
     MatMenuModule,
     MatBadgeModule,
-<<<<<<< HEAD
     ReactiveFormsModule,
-    NgxFileDropModule,
     SharedModule
 ]
-=======
-    SharedModule,
-  ],
->>>>>>> main
 })
 export class DashboardModule {}
