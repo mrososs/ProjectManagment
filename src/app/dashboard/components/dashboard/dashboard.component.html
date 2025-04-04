@@ -2,16 +2,14 @@
   <div class="col-12">
     <app-navbar></app-navbar>
   </div>
-
-  <div
-    [ngClass]="{ 'col-3': !isSidebarCollapsed, 'col-1': isSidebarCollapsed }"
-  >
-    <app-sidebar (collapsedChange)="toggleSidebar($event)"></app-sidebar>
+  <div class="d-flex">
+    <app-sidebar
+      class="w-25 h-100"
+      (collapsedChange)="toggleSidebar($event)"
+    ></app-sidebar>
+    <div class="content w-100">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
-  <div
-    [ngClass]="{ 'col-9': !isSidebarCollapsed, 'col-11': isSidebarCollapsed }"
-  >
-    <router-outlet></router-outlet>
-  </div>
 </div>

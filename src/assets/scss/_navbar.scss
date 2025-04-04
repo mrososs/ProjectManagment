@@ -1,9 +1,4 @@
 .navbar {
-    .logo{
-        img{
-            
-        }
-    }
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -63,5 +58,10 @@
             color: #A7A7A7;
         }
 
+    }
+    @media screen and (max-width: 768px) {
+        .hidden {
+            display: none;
+        }
     }
 }

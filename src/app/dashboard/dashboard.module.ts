@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -15,9 +14,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgxFileDropModule } from 'ngx-file-drop';
 import { SharedModule } from "../shared/shared.module";
 
+import { NgxFileDropModule } from 'ngx-file-drop';
 
 
 @NgModule({
@@ -26,12 +25,15 @@ import { SharedModule } from "../shared/shared.module";
     NavbarComponent ,
     SidebarComponent,
     ProfileComponent,
+    HomepageComponent,
     NavbarComponent,
     SidebarComponent,
+    ProfileComponent,
     HomepageComponent,
   ],
   imports: [
     CommonModule,
+    DashboardRoutingModule ,
     DashboardRoutingModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -42,7 +44,8 @@ import { SharedModule } from "../shared/shared.module";
     MatBadgeModule,
     ReactiveFormsModule,
     NgxFileDropModule,
-    SharedModule
+    SharedModule,
+    NgxFileDropModule,
   ],
 })
 export class DashboardModule {}
