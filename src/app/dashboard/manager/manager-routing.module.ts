@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ManagerComponent } from './manager.component';
+import { ManagerComponent } from '../components/manager/manager.component';
+import { HomepageComponent } from '../components/homepage/homepage.component';
 
 const routes: Routes = [
-  { path: '', component: ManagerComponent },
+  { path: '', component: HomepageComponent },
   {
     path: 'projects',
     loadChildren: () =>
@@ -14,6 +15,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./tasks/tasks.module').then((m) => m.TasksModule),
   },
+  { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
 ];
 
 @NgModule({
