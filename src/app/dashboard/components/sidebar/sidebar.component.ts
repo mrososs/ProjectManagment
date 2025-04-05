@@ -21,7 +21,11 @@ export class SidebarComponent implements OnInit {
   menuList: Menu[] = [];
 
   private allMenuItems: Menu[] = [
-    { name: 'Users', icon: 'group', route: 'admin/users', isAdmin: true },
+    { name: 'Users',
+       icon: 'group',
+       route: 'manager/users',
+        isAdmin: true
+      },
     {
       name: 'Projects',
       icon: 'grid_view',
@@ -29,15 +33,15 @@ export class SidebarComponent implements OnInit {
       isAdmin: true,
     },
     {
-      name: 'Recipes',
+      name: 'Projects',
       icon: 'grid_view',
-      route: 'user/user-recipes',
+      route: 'employee/project',
       isAdmin: false,
     },
     {
-      name: 'Favorites',
+      name: 'Tasks',
       icon: 'favorite',
-      route: 'user/fav-recipes',
+      route: 'employee/task',
       isAdmin: false,
     },
     {
@@ -46,7 +50,7 @@ export class SidebarComponent implements OnInit {
       route: 'admin/categories',
       isAdmin: true,
     },
-  
+
   ];
 
   constructor(private _storageService: StorageService) {}

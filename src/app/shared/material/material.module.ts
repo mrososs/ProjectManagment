@@ -12,6 +12,15 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  CdkDrag,
+  CdkDropList,
+  CdkDropListGroup,
+
+} from '@angular/cdk/drag-drop';
+
 const MaterialComponents = [
   CommonModule,
   MatIconModule,
@@ -22,10 +31,15 @@ const MaterialComponents = [
   MatInputModule,
   MatPaginatorModule ,
 
-
-
   MatTooltipModule,
   MatCardModule,
+
+  DragDropModule ,
+  //  CdkDragDrop,
+  CdkDrag,
+  CdkDropList,
+  CdkDropListGroup,
+
 ];
 
 @NgModule({
