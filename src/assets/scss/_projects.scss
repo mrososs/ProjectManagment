@@ -1,6 +1,4 @@
 .projects {
-  height: 100vh;
-
   h1 {
     margin: 0;
     font-weight: 500;
@@ -18,33 +16,58 @@
     }
   }
 
+  /* For standard HTML tables */
   table {
     width: 100%;
 
-    thead {
-      tr {
-        th {
-          background-color: #315951;
-          color: white;
-          border-right: 1px solid white;
-        }
+    thead tr th {
+      background-color: #315951;
+      color: white;
+      border-right: 1px solid white;
+      text-align: left;
+      padding: 10px;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: white;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: rgba(245, 245, 245, 1);
+    }
+
+    tbody td {
+      padding: 10px;
+      text-align: left;
+      vertical-align: middle;
+    }
+  }
+
+  /* For Angular Material tables */
+  .mat-mdc-table {
+    width: 100%;
+
+    .mat-mdc-header-row {
+      background-color: #315951;
+
+      .mat-mdc-header-cell {
+        color: white;
+        border-right: 1px solid white;
+        padding: 10px;
       }
     }
 
-    tbody {
-      tr {
-        &:nth-child(odd) {
-          background-color: white;
-        }
+    .mat-mdc-row:nth-child(odd) {
+      background-color: white;
+    }
 
-        &:nth-child(even) {
-          background-color: rgba(245, 245, 245, 1);
-        }
+    .mat-mdc-row:nth-child(even) {
+      background-color: rgba(245, 245, 245, 1);
+    }
 
-        td {
-          padding: 10px; // Adjust padding as needed
-        }
-      }
+    .mat-mdc-cell {
+      padding: 10px;
+      vertical-align: middle;
     }
   }
 }

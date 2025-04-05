@@ -37,21 +37,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>mohamed</td>
-              <td>osama</td>
-              <td>mohamed</td>
-              <td>osama</td>
-              <td>mohamed</td>
-              <td>osama</td>
-            </tr>
-            <tr>
-              <td>mohamed</td>
-              <td>osama</td>
-              <td>mohamed</td>
-              <td>osama</td>
-              <td>mohamed</td>
-              <td>osama</td>
+            <tr *ngFor="let project of projects$ | async; let i = index">
+              <td>{{ project.title }}</td>
+              <td>Public</td>
+              <td>{{ project.id }}</td>
+              <td>{{ project.task.length }}</td>
+              <td>{{ project.creationDate | date : "shortDate" }}</td>
+              <td>
+                <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                  <mat-icon style="color: black">arrow_drop_down</mat-icon>
+                </button>
+
+                <mat-menu #userMenu="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>remove_red_eye</mat-icon> View
+                  </button>
+                  <button mat-menu-item><mat-icon>edit</mat-icon> Edit</button>
+                  <button mat-menu-item>
+                    <mat-icon>delete</mat-icon> Delete
+                  </button>
+                </mat-menu>
+              </td>
             </tr>
           </tbody>
         </table>
