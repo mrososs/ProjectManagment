@@ -12,7 +12,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-10 mx-auto">
-        <form [formGroup]="addEditForm" (onSubmit)="onSubmit()">
+        <form [formGroup]="addEditForm">
           <div class="shared-card">
             <div class="custom-form-field" appearance="outline">
               <label class="shared-title">Title</label>
@@ -36,7 +36,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
               <mat-form-field class="w-50">
                 <mat-label class="shared-title">User</mat-label>
-                <mat-select formControlName="userId">
+                <mat-select formControlName="employeeId">
                   <mat-option *ngFor="let user of users" [value]="user.id">
                     {{ user.userName }}
                   </mat-option>
@@ -63,7 +63,7 @@
               >
               <a
                 *ngIf="!isView"
-                type="button"
+                (click)="onSubmit()"
                 class="btn main-btn add_new fw-bold"
                 >Save</a
               >

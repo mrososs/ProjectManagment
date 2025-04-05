@@ -34,7 +34,7 @@ export class AddEditTaskComponent implements OnInit {
       title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       projectId: new FormControl('', [Validators.required]),
-      userId: new FormControl('', [Validators.required]),
+      employeeId: new FormControl('', [Validators.required]),
     });
   }
 
@@ -57,18 +57,28 @@ export class AddEditTaskComponent implements OnInit {
   onGetTask(id: number): void {
     this.tasksService.getTaskById(id).subscribe({
       next: (res) => {
+        // Patch task data into the form, including the employeeId
         this.addEditForm.patchValue({
           title: res.title,
           description: res.description,
           projectId: res.project.id,
-          userId: res.employee.id, // Ensure you patch the employee's id correctly
+          employeeId: res.employee.id, // Correctly patch employeeId into the form
         });
 
-        // If you want to display the employee's username in the dropdown
-        const user = this.users.find((u: any) => u.id === res.employee.id);
-        if (user) {
-          this.addEditForm.get('userId')?.setValue(user.id);
+        // After patching, set the employeeId if needed (i.e., set it from the list of users)
+        const selectedUser = this.users.find(
+          (u: any) => u.id === res.employee.id
+        );
+        if (selectedUser) {
+          // Make sure employeeId is correctly set if user is found
+          this.addEditForm.get('employeeId')?.setValue(selectedUser.id);
+        } else {
+          // If user is not found in the users list, you can handle it here (optional)
+          this._toaster.error('Employee not found.');
         }
+      },
+      error: (err) => {
+        console.error('Error fetching task data', err);
       },
     });
   }
@@ -98,15 +108,31 @@ export class AddEditTaskComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.addEditForm.valid && this.isEdit) {
-      const taskData = this.addEditForm.value;
-      // Call the service to update the task with taskData
-      this.tasksService.onAddTask(taskData).subscribe({
-        next: () => this._route.navigate(['/dashboard/manager/projects']),
-        complete: () => {
-          this._toaster.success('Edit Project Success');
-        },
-      });
+    const taskData = this.addEditForm.value;
+
+    // Ensure employeeId is correctly set
+    if (!taskData.employeeId) {
+      // If employeeId is not set, attempt to get it from the users list (or show an error)
+      const selectedUser = this.users.find(
+        (user: any) => user.id === taskData.employeeId
+      );
+      if (selectedUser) {
+        taskData.employeeId = selectedUser.id; // Ensure correct user ID is being set
+      } else {
+        // Handle case where employeeId is not valid (you can show a toaster message here)
+        this._toaster.error('Please select a valid employee.');
+        return; // Prevent submission if no valid employee is selected
+      }
     }
+
+    console.log(taskData); // Check if employeeId is correct
+
+    // Call the service to add the task with taskData
+    this.tasksService.onAddTask(taskData).subscribe({
+      next: () => this._toaster.success('Task saved successfully!'),
+      complete: () => {
+        this._route.navigate(['/dashboard/manager/tasks']);
+      },
+    });
   }
 }
