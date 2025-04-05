@@ -1,3 +1,11 @@
+export interface IProjectsResponse {
+    pageNumber: number;
+    pageSize: number;
+    totalNumberOfRecords: number;
+    totalNumberOfPages: number;
+    data: IProject[];
+  }
+  
 export interface IProject {
     creationDate: string;
     modificationDate: string;
