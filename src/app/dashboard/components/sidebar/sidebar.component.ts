@@ -47,7 +47,7 @@ export class SidebarComponent implements OnInit {
     {
       name: 'Tasks',
       icon: 'event_note',
-      route: 'admin/categories',
+      route: 'manager/tasks',
       isAdmin: true,
     },
 

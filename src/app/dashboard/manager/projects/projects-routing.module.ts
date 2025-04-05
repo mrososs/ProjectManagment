@@ -6,6 +6,7 @@ import { AddEditProjectComponent } from './components/add-edit-project/add-edit-
 const routes: Routes = [
   { path: '', component: ProjectsComponent },
   { path: 'add', component: AddEditProjectComponent },
+  {path:'view/:id',component:AddEditProjectComponent},
   { path: 'edit/:id', component: AddEditProjectComponent },
 ];
 
