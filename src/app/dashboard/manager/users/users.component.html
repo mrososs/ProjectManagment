@@ -4,8 +4,8 @@
   </div>
   <div class="row pt-5 pb-2 px-5 ">
 
-    <table>
-      <thead>
+    <table class="shadow">
+      <thead >
         <th> User Name</th>
         <th> Statues</th>
         <th> Phone Number </th>
@@ -16,7 +16,9 @@
       <tbody>
         <tr *ngFor=" let user of allUsers">
           <td >{{user.userName}}</td>
-          <td >{{user.task[0].status}}</td>
+          <td *ngIf="user.isActivated"> <button class="done-active-btn">Active</button></td>
+          <td *ngIf="!user.isActivated"> <button class="not-active-btn">Not Active</button></td>
+
          <td >{{user.phoneNumber}}</td>
           <td >{{user.email}}</td>
           <td >{{user.task[0].creationDate }}</td>
