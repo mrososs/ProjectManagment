@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { IProject } from '../../../core/interfaces/project-task';
 
 
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-projects',
@@ -18,6 +19,9 @@ import { IProject } from '../../../core/interfaces/project-task';
 export class ProjectsComponent implements OnInit {
   searchForm!: FormGroup;
   projects$; // Observable for async pipe
+  pageSize = 10;
+  pageNumber = 1;
+  length = 0;
 
   constructor(private projectService: ProjectService,
     public dialog: MatDialog,
@@ -31,16 +35,22 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchProjects(); // Initial fetch
-
-    this.searchForm.get('search')?.valueChanges.pipe(debounceTime(300)).subscribe((value) => {
-      this.fetchProjects(value);
+    this.projectService.totalPages$.subscribe((totalPages) => {
+      this.length = totalPages;
     });
+
+    this.searchForm
+      .get('search')
+      ?.valueChanges.pipe(debounceTime(300))
+      .subscribe((value) => {
+        this.fetchProjects(value);
+      });
   }
 
   fetchProjects(searchText: string = ''): void {
     this.projectService.getProjectsForManager({
-      pageSize: 10,
-      pageNumber: 1,
+      pageSize: this.pageSize,
+      pageNumber: this.pageNumber,
       title: searchText || undefined,
     });
   }
@@ -77,4 +87,9 @@ export class ProjectsComponent implements OnInit {
         }
       }) 
     }
+  handlePageEvent(event: PageEvent): void {
+    this.pageSize = event.pageSize;
+    this.pageNumber = event.pageIndex + 1; // Angular paginator is 0-based
+    this.fetchProjects();
+  }
 }

@@ -68,7 +68,7 @@
                 <td>{{ user.userName }}</td>
                 <td>
                   <span
-                  (click)="toggleStatus(user.id)"
+                    (click)="toggleStatus(user.id)"
                     [ngClass]="
                       user.isActivated ? 'badge-active' : 'badge-inactive'
                     "
@@ -79,7 +79,21 @@
                 </td>
                 <td>{{ user.phoneNumber }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.task.creationDate | date : "shortDate" }}</td>
+                <td>{{ user.task[0].creationDate | date : "shortDate" }}</td>
+                <td>
+                  <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                    <mat-icon style="color: black">arrow_drop_down</mat-icon>
+                  </button>
+
+                  <mat-menu #userMenu="matMenu">
+                    <button mat-menu-item [routerLink]="['view', user.id]">
+                      <mat-icon>remove_red_eye</mat-icon> Block
+                    </button>
+                    <button mat-menu-item [routerLink]="['edit', user.id]">
+                      <mat-icon>edit</mat-icon> View
+                    </button>
+                  </mat-menu>
+                </td>
                 <!-- other columns -->
               </tr>
             </ng-container>

@@ -13,6 +13,8 @@ import {
 export class ProjectService {
   private projectsSubject = new BehaviorSubject<IProject[]>([]);
   projects$ = this.projectsSubject.asObservable(); // Expose as Observable
+  private totalPagesSubject = new BehaviorSubject<number>(0);
+  totalPages$ = this.totalPagesSubject.asObservable();
   constructor(private _HttpClient: HttpClient) {}
 
   onAddProject(data: IProAdd): Observable<IProAdd> {
@@ -39,7 +41,10 @@ export class ProjectService {
     this._HttpClient
       .get<IProjectsResponse>(url)
       .pipe(
-        tap((response) => this.projectsSubject.next(response.data)) // Update BehaviorSubject
+        tap((response) => {
+          this.projectsSubject.next(response.data);
+          this.totalPagesSubject.next(response.totalNumberOfPages);
+        }) // Update BehaviorSubject
       )
       .subscribe();
   }
