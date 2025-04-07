@@ -21,6 +21,11 @@ export class SidebarComponent implements OnInit {
   menuList: Menu[] = [];
 
   private allMenuItems: Menu[] = [
+    { name: 'Home',
+      icon: 'home',
+      route: 'home',
+       isAdmin: false
+     },
     { name: 'Users',
        icon: 'group',
        route: 'manager/users',
