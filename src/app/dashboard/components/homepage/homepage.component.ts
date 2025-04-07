@@ -43,49 +43,126 @@ export class HomepageComponent implements OnInit {
 
   constructor(private _dashboardService: DashboardService,private _storgeService:StorageService) {}
 
+  // ngOnInit(): void {
+  //   this.isEmployee = this._storgeService.isEmployee();
+  //   // Use forkJoin to fetch taskCount and userCount simultaneously
+  //   forkJoin({
+  //     taskCount: this._dashboardService.fetchTaskCount(),
+  //     userCount: this._dashboardService.fetchUserCount(),
+  //   }).subscribe(({ taskCount, userCount }) => {
+  //     // Update task count
+  //     this.taskCount = taskCount;
+  //     this.chartOptions = {
+  //       ...this.chartOptions,
+  //       data: [
+  //         {
+  //           type: 'pie',
+  //           startAngle: -90,
+  //           indexLabel: '{name}: {y}',
+  //           yValueFormatString: "#,###.##'%'",
+  //           dataPoints: [
+  //             { y: taskCount.toDo, name: 'To Do' },
+  //             { y: taskCount.inProgress, name: 'In Progress' },
+  //             { y: taskCount.done, name: 'Done' },
+  //           ],
+  //         },
+  //       ],
+  //     };
+
+  //     // Update user count
+  //     this.userCount = userCount;
+  //     this.userChartOptions = {
+  //       ...this.userChartOptions,
+  //       data: [
+  //         {
+  //           type: 'pie',
+  //           startAngle: -90,
+  //           indexLabel: '{name}: {y}',
+  //           yValueFormatString: "#,###.##'%'",
+  //           dataPoints: [
+  //             { y: userCount.activatedEmployeeCount, name: 'Activated' },
+  //             { y: userCount.deactivatedEmployeeCount, name: 'Deactivated' },
+  //           ],
+  //         },
+  //       ],
+  //     };
+  //   });
+  // }
+
+
   ngOnInit(): void {
     this.isEmployee = this._storgeService.isEmployee();
     // Use forkJoin to fetch taskCount and userCount simultaneously
-    forkJoin({
-      taskCount: this._dashboardService.fetchTaskCount(),
-      userCount: this._dashboardService.fetchUserCount(),
-    }).subscribe(({ taskCount, userCount }) => {
-      // Update task count
-      this.taskCount = taskCount;
-      this.chartOptions = {
-        ...this.chartOptions,
-        data: [
-          {
-            type: 'pie',
-            startAngle: -90,
-            indexLabel: '{name}: {y}',
-            yValueFormatString: "#,###.##'%'",
-            dataPoints: [
-              { y: taskCount.toDo, name: 'To Do' },
-              { y: taskCount.inProgress, name: 'In Progress' },
-              { y: taskCount.done, name: 'Done' },
-            ],
-          },
-        ],
-      };
+    if(this.isEmployee){
+      forkJoin({
+        taskCount: this._dashboardService.fetchTaskCount(),
 
-      // Update user count
-      this.userCount = userCount;
-      this.userChartOptions = {
-        ...this.userChartOptions,
-        data: [
-          {
-            type: 'pie',
-            startAngle: -90,
-            indexLabel: '{name}: {y}',
-            yValueFormatString: "#,###.##'%'",
-            dataPoints: [
-              { y: userCount.activatedEmployeeCount, name: 'Activated' },
-              { y: userCount.deactivatedEmployeeCount, name: 'Deactivated' },
-            ],
-          },
-        ],
-      };
-    });
-  }
+      }).subscribe(({ taskCount }) => {
+        // Update task count
+        this.taskCount = taskCount;
+        this.chartOptions = {
+          ...this.chartOptions,
+          data: [
+            {
+              type: 'pie',
+              startAngle: -90,
+              indexLabel: '{name}: {y}',
+              yValueFormatString: "#,###.##'%'",
+              dataPoints: [
+                { y: taskCount.toDo, name: 'To Do' },
+                { y: taskCount.inProgress, name: 'In Progress' },
+                { y: taskCount.done, name: 'Done' },
+              ],
+            },
+          ],
+        };
+      });
+
+    }
+    else{
+      forkJoin({
+        taskCount: this._dashboardService.fetchTaskCount(),
+        userCount: this._dashboardService.fetchUserCount(),
+      }).subscribe(({ taskCount, userCount }) => {
+        // Update task count
+        this.taskCount = taskCount;
+        this.chartOptions = {
+          ...this.chartOptions,
+          data: [
+            {
+              type: 'pie',
+              startAngle: -90,
+              indexLabel: '{name}: {y}',
+              yValueFormatString: "#,###.##'%'",
+              dataPoints: [
+                { y: taskCount.toDo, name: 'To Do' },
+                { y: taskCount.inProgress, name: 'In Progress' },
+                { y: taskCount.done, name: 'Done' },
+              ],
+            },
+          ],
+        };
+
+        // Update user count
+        this.userCount = userCount;
+        this.userChartOptions = {
+          ...this.userChartOptions,
+          data: [
+            {
+              type: 'pie',
+              startAngle: -90,
+              indexLabel: '{name}: {y}',
+              yValueFormatString: "#,###.##'%'",
+              dataPoints: [
+                { y: userCount.activatedEmployeeCount, name: 'Activated' },
+                { y: userCount.deactivatedEmployeeCount, name: 'Deactivated' },
+              ],
+            },
+          ],
+        };
+      });
+
+    }
+
+    }
 }
