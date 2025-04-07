@@ -52,6 +52,7 @@ export class UsersComponent implements OnInit {
       next: (res) => {
         this.allUsers = res.data;
         this.length = res.totalNumberOfRecords; // ✅ Use correct key from API
+        console.log(this.allUsers);
       },
       error: (err) => {
         console.log(err);
@@ -69,4 +70,16 @@ export class UsersComponent implements OnInit {
     this.pageNumber = event.pageIndex + 1; // Angular paginator is 0-based
     this.getUsers();
   }
+  toggleStatus(userId: number): void {
+    this._UsersService.onToggleActivatedUsers(userId).subscribe({
+      next: () => {
+        // After toggling, refresh the user list to reflect the updated status
+        this.getUsers();
+      },
+      error: (err) => {
+        console.error('Error toggling user status:', err);
+      },
+    });
+  }
+  
 }

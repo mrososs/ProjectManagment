@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import {
@@ -13,6 +13,8 @@ import {
 export class ProjectService {
   private projectsSubject = new BehaviorSubject<IProject[]>([]);
   projects$ = this.projectsSubject.asObservable(); // Expose as Observable
+  private totalPagesSubject = new BehaviorSubject<number>(0);
+  totalPages$ = this.totalPagesSubject.asObservable();
   constructor(private _HttpClient: HttpClient) {}
 
   onAddProject(data: IProAdd): Observable<IProAdd> {
@@ -39,8 +41,24 @@ export class ProjectService {
     this._HttpClient
       .get<IProjectsResponse>(url)
       .pipe(
-        tap((response) => this.projectsSubject.next(response.data)) // Update BehaviorSubject
+        tap((response) => {
+          this.projectsSubject.next(response.data);
+          this.totalPagesSubject.next(response.totalNumberOfPages);
+        }) // Update BehaviorSubject
       )
       .subscribe();
+  }
+  deleteProject(id: number | undefined): Observable<any> {
+    if (!id) {
+      console.log('Category ID is required to delete.');
+    }
+    const token = localStorage.getItem('userToken');
+    if (!token) {
+      console.error('Token not found');
+    }
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this._HttpClient.delete(`Project/${id}` , { headers });
   }
 }

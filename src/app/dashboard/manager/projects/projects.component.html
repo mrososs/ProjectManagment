@@ -58,7 +58,7 @@
                   >
                     <mat-icon>edit</mat-icon> Edit
                   </button>
-                  <button mat-menu-item>
+                  <button (click)="openDeleteDialog(project)" mat-menu-item>
                     <mat-icon>delete</mat-icon> Delete
                   </button>
                 </mat-menu>
@@ -66,6 +66,13 @@
             </tr>
           </tbody>
         </table>
+        <mat-paginator
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 15]"
+        aria-label="Select page"
+        (page)="handlePageEvent($event)"
+      ></mat-paginator>
       </div>
     </div>
   </div>

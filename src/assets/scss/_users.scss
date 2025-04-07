@@ -1,5 +1,5 @@
 .users {
-  mat-form-field.custom-search{
+  mat-form-field.custom-search {
     border-radius: 30px;
   }
   h1 {
@@ -26,6 +26,7 @@
       display: inline-block;
       padding: 6px 16px;
       font-size: 14px;
+      cursor: pointer;
       font-weight: 500;
       border-radius: 999px;
       text-align: center;
