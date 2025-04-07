@@ -21,7 +21,7 @@ export class UsersService {
     return this._HttpClient.get<IAllUsers>(url);
   }
 
-  onToggleActivatedUsers(id: number | null): Observable<IToggleData | any> {
-    return this._HttpClient.put(`Users/${id}`, { id: 'id' });
+  onToggleActivatedUsers(id: number): Observable<IToggleData | any> {
+    return this._HttpClient.put(`Users/${id}`, { id });
   }
 }

@@ -8,7 +8,6 @@ export interface IAllUsers {
   totalNumberOfPages: number;
 }
 
-
 export interface IUsersData {
   id: number;
   userName: string;
@@ -17,26 +16,25 @@ export interface IUsersData {
   phoneNumber: number;
   imagePath: string;
   isActivated: boolean;
-  task: ITaskData[];
+  task: ITaskData;
 }
 
-
 export interface IToggleData {
-    id: number,
-    userName: string,
-    email: string,
-    country :string ,
-    phoneNumber: number,
-    imagePath: string,
-    isActivated: boolean,
-    group : IGroup ,
-    creationDate: Date,
-    modificationDate: Date
-  }
+  id: number;
+  userName: string;
+  email: string;
+  country: string;
+  phoneNumber: number;
+  imagePath: string;
+  isActivated: boolean;
+  group: IGroup;
+  creationDate: Date;
+  modificationDate: Date;
+}
 
-  export interface IGroup {
-    id: number,
-    name:string,
-    creationDate: Date,
-    modificationDate: Date
+export interface IGroup {
+  id: number;
+  name: string;
+  creationDate: Date;
+  modificationDate: Date;
 }

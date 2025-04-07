@@ -47,7 +47,6 @@
               </mat-menu>
             </div>
           </div>
-         
         </form>
       </div>
 
@@ -65,10 +64,11 @@
           </thead>
           <tbody>
             <ng-container *ngFor="let user of allUsers">
-              <tr *ngFor="let userTask of user.task">
+              <tr>
                 <td>{{ user.userName }}</td>
                 <td>
                   <span
+                  (click)="toggleStatus(user.id)"
                     [ngClass]="
                       user.isActivated ? 'badge-active' : 'badge-inactive'
                     "
@@ -79,33 +79,19 @@
                 </td>
                 <td>{{ user.phoneNumber }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ userTask.creationDate | date : "shortDate" }}</td>
-                <td>
-                  <button mat-icon-button [matMenuTriggerFor]="userMenu">
-                    <mat-icon style="color: black">arrow_drop_down</mat-icon>
-                  </button>
-
-                  <mat-menu #userMenu="matMenu">
-                    <button mat-menu-item [routerLink]="['view', userTask.id]">
-                      <mat-icon>delete</mat-icon> block
-                    </button>
-                    <button mat-menu-item [routerLink]="['edit', userTask.id]">
-                      <mat-icon>remove_red_eye</mat-icon> View
-                    </button>
-                  </mat-menu>
-                </td>
+                <td>{{ user.task.creationDate | date : "shortDate" }}</td>
+                <!-- other columns -->
               </tr>
             </ng-container>
           </tbody>
         </table>
         <mat-paginator
-        [length]="length"
-        [pageSize]="pageSize"
-        [pageSizeOptions]="[5, 10, 15]"
-        aria-label="Select page"
-        (page)="handlePageEvent($event)"
-      ></mat-paginator>
-      
+          [length]="length"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="[5, 10, 15]"
+          aria-label="Select page"
+          (page)="handlePageEvent($event)"
+        ></mat-paginator>
       </div>
     </div>
   </div>
