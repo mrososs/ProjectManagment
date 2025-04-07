@@ -15,8 +15,8 @@ export interface ITaskData {
       title: string,
       description: string,
       status: string,
-      creationDate: Data,
-      modificationDate: Data,
+      creationDate: string,
+      modificationDate: string,
       project ?: IProject ,
       employee ?:IEmployee
 

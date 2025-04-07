@@ -1,64 +1,104 @@
-<section class=" ">
-  <div class="title px-5 py-3">
-    <h2> Users </h2>
-  </div>
-  <div class="row pt-5 pb-2 px-5 ">
-
-    <div class="table table-responsive">
-    <table class="table">
-      <thead >
-        <th> User Name</th>
-        <th> Statues</th>
-        <th> Phone Number </th>
-        <th> Email</th>
-        <th>creationDate</th>
-
-      </thead>
-      <tbody>
-        <tr *ngFor=" let user of allUsers">
-          <td >{{user.userName}}</td>
-
-           <td  >
-           <a (click)="onToggleActivatedUsers(user)" >
-            <button *ngIf="user.isActivated" class="done-active-btn">Active</button>
-            <button  *ngIf="!user.isActivated"  class="not-active-btn" > Not Active</button>
-           </a>
-          </td>
-
-          <!-- <td *ngIf="!user.isActivated" >
-            <a (click)="onToggleActivatedUsers(user.id)" >
-             <button *ngIf="toggleActive" class="done-active-btn">Active</button>
-             <button  *ngIf="!toggleActive"  class="not-active-btn" > Not Active</button>
-            </a>
-           </td> -->
-
-           <!-- <td *ngIf="!user.isActivated">
-            <a (click)="onToggleActivatedUsers(user.task[0].id)" >
-               <button [class]="isActive? 'done-active-btn' : 'not-active-btn'" >Not Active</button>
-           </a>
-          </td> -->
-
-         <td >{{user.phoneNumber}}</td>
-          <td >{{user.email}}</td>
-          <td >{{user.task[0].creationDate }}</td>
-
-
-        </tr>
-      </tbody>
-
-    </table>
-         <mat-paginator [length]="length"
-      [pageSize]="pageSize"
-      [pageSizeOptions]="[3,5, 10, 15]"
-      aria-label="Select page"
-      (page)="handlePageEvent($event)">
-  </mat-paginator>
+<section class="users">
+  <div class="w-100 bg-white">
+    <div
+      class="container p-5 d-flex justify-content-between align-items-center"
+    >
+      <h1>Users</h1>
+    </div>
   </div>
 
+  <div class="container px-5 mt-3">
+    <div class="w-100 bg-white table-container">
+      <div class="p-3">
+        <form [formGroup]="searchForm">
+          <div class="d-flex justify-content-start align-items-center gap-3">
+            <div class="">
+              <mat-form-field appearance="outline" class="custom-search">
+                <mat-icon matPrefix>search</mat-icon>
+                <input
+                  matInput
+                  placeholder="Search By Title"
+                  formControlName="search"
+                />
+              </mat-form-field>
+            </div>
+            <div class="">
+              <button
+                mat-button
+                [matMenuTriggerFor]="filterMenu"
+                class="btn border rounded-pill px-3"
+              >
+                <mat-icon>tune</mat-icon>
+                <span class="ms-1">Filter</span>
+              </button>
 
+              <mat-menu #filterMenu="matMenu">
+                <button mat-menu-item (click)="filterByStatus('Active')">
+                  <mat-icon>check_box_outline_blank</mat-icon> Active
+                </button>
+                <button mat-menu-item (click)="filterByStatus('Not Active')">
+                  <mat-icon>hourglass_empty</mat-icon> Not Active
+                </button>
 
+                <mat-divider></mat-divider>
+                <button mat-menu-item (click)="filterByStatus('')">
+                  <mat-icon>clear</mat-icon> Clear Filter
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+         
+        </form>
+      </div>
 
+      <div class="table table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>Status</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Date Created</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let user of allUsers">
+              <tr *ngFor="let userTask of user.task">
+                <td>{{ user.userName }}</td>
+                <td>
+                  <span
+                    [ngClass]="
+                      user.isActivated ? 'badge-active' : 'badge-inactive'
+                    "
+                    class="status-badge"
+                  >
+                    {{ user.isActivated ? "Active" : "Not Active" }}
+                  </span>
+                </td>
+                <td>{{ user.phoneNumber }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ userTask.creationDate | date : "shortDate" }}</td>
+                <td>
+                  <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                    <mat-icon style="color: black">arrow_drop_down</mat-icon>
+                  </button>
 
-
+                  <mat-menu #userMenu="matMenu">
+                    <button mat-menu-item [routerLink]="['view', userTask.id]">
+                      <mat-icon>delete</mat-icon> block
+                    </button>
+                    <button mat-menu-item [routerLink]="['edit', userTask.id]">
+                      <mat-icon>remove_red_eye</mat-icon> View
+                    </button>
+                  </mat-menu>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-  </section>
+</section>

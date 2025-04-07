@@ -14,8 +14,8 @@
     <div class="w-100 bg-white table-container">
       <div class="p-3">
         <form [formGroup]="searchForm">
-          <div class="row">
-            <div class="col-5">
+          <div class="d-flex justify-content-start align-items-center gap-3">
+            <div class="">
               <mat-form-field appearance="outline" class="custom-search">
                 <mat-icon matPrefix>search</mat-icon>
                 <input
@@ -25,7 +25,7 @@
                 />
               </mat-form-field>
             </div>
-            <div class="col-2 d-flex align-items-center">
+            <div class="">
               <button
                 mat-button
                 [matMenuTriggerFor]="filterMenu"
