@@ -1,0 +1,96 @@
+.users {
+  mat-form-field.custom-search{
+    border-radius: 30px;
+  }
+  h1 {
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .table-container {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .mat-mdc-form-field {
+    .mat-mdc-form-field-outline {
+      border-radius: 20px !important;
+      overflow: hidden;
+    }
+  }
+
+  /* For standard HTML tables */
+  table {
+    width: 100%;
+    .status-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 999px;
+      text-align: center;
+      min-width: 100px;
+      white-space: nowrap;
+    }
+
+    .badge-active {
+      background-color: #00964e;
+      color: white;
+    }
+
+    .badge-inactive {
+      background-color: #b36d6d;
+      color: white;
+    }
+
+    thead tr th {
+      background-color: #315951;
+      color: white;
+      border-right: 1px solid white;
+      text-align: left;
+      padding: 10px;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: white;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: rgba(245, 245, 245, 1);
+    }
+
+    tbody td {
+      padding: 10px;
+      text-align: left;
+      vertical-align: middle;
+    }
+  }
+
+  /* For Angular Material tables */
+  .mat-mdc-table {
+    width: 100%;
+
+    .mat-mdc-header-row {
+      background-color: #315951;
+
+      .mat-mdc-header-cell {
+        color: white;
+        border-right: 1px solid white;
+        padding: 10px;
+      }
+    }
+
+    .mat-mdc-row:nth-child(odd) {
+      background-color: white;
+    }
+
+    .mat-mdc-row:nth-child(even) {
+      background-color: rgba(245, 245, 245, 1);
+    }
+
+    .mat-mdc-cell {
+      padding: 10px;
+      vertical-align: middle;
+    }
+  }
+}
