@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatDialogModule} from '@angular/material/dialog';
 import { MaterialModule } from './material/material.module';
 import {
   provideHttpClient,
@@ -15,6 +16,7 @@ import { ValidateDirective } from './directives/validate.directive';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { CustomTableComponent } from './components/custom-table/custom-table.component';
+import { DeleteItemComponent } from './components/delete-item/delete-item.component';
 
 
 
@@ -24,7 +26,8 @@ import { CustomTableComponent } from './components/custom-table/custom-table.com
     FilePreviewComponent,
     ValidateDirective,
     SplashScreenComponent,
-    CustomTableComponent
+    CustomTableComponent,
+    DeleteItemComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +37,7 @@ import { CustomTableComponent } from './components/custom-table/custom-table.com
     ReactiveFormsModule,
     MaterialModule,
     RouterModule,
+    MatDialogModule
 
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
@@ -47,7 +51,8 @@ import { CustomTableComponent } from './components/custom-table/custom-table.com
     FormsModule,
     RouterModule,
     CustomFormFieldComponent,
-    CustomTableComponent
+    CustomTableComponent,
+    MatDialogModule
   ],
 })
 export class SharedModule {}

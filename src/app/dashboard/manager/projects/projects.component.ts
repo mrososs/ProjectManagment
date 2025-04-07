@@ -2,6 +2,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ProjectService } from './services/project.service';
 import { debounceTime } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteItemComponent } from '../../../shared/components/delete-item/delete-item.component';
+import { ToastrService } from 'ngx-toastr';
+import { IProject } from '../../../core/interfaces/project-task';
+
+
 import { PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -17,7 +23,10 @@ export class ProjectsComponent implements OnInit {
   pageNumber = 1;
   length = 0;
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService,
+    public dialog: MatDialog,
+    private toastr: ToastrService
+  ) {
     this.projects$ = this.projectService.projects$; // Initialize projects$ here
     this.searchForm = new FormGroup({
       search: new FormControl(''),
@@ -45,6 +54,39 @@ export class ProjectsComponent implements OnInit {
       title: searchText || undefined,
     });
   }
+  getProjects(): void {
+    this.projectService.getProjectsForManager({
+      pageSize: 10,
+      pageNumber: 1,
+    });
+  }
+  //delete project
+  openDeleteDialog(project: IProject): void {
+    const dialogRef = this.dialog.open(DeleteItemComponent , {
+      data: {name: project.title},
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(project.id);
+        this.deleteProject(project.id)
+      }
+      });
+    }
+    deleteProject(id : number | undefined): void {
+      this.projectService.deleteProject(id).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.toastr.success('project Deleted Successfully');
+        },
+        error: (err) => {
+          this.toastr.error(err.error.message);
+        },
+        complete: () => { 
+          this.getProjects();
+        }
+      }) 
+    }
   handlePageEvent(event: PageEvent): void {
     this.pageSize = event.pageSize;
     this.pageNumber = event.pageIndex + 1; // Angular paginator is 0-based
