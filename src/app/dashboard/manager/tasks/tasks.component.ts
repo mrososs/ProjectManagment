@@ -3,16 +3,20 @@ import { TasksService } from './services/tasks.service';
 import { Task } from '../../../core/interfaces/taskModel';
 import { FormControl, FormGroup } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.scss'],
-  standalone:false
+  standalone: false,
 })
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
   searchForm!: FormGroup;
+  pageSize = 10;
+  pageNumber = 1;
+  length = 0;
 
   constructor(private _taskService: TasksService) {
     this.searchForm = new FormGroup({
@@ -42,8 +46,8 @@ export class TasksComponent implements OnInit {
     const title = this.searchForm.get('search')?.value || '';
     this._taskService
       .getTasks({
-        pageSize: 10,
-        pageNumber: 0,
+        pageSize: this.pageSize,
+        pageNumber: this.pageNumber,
         title,
         status,
       })
@@ -53,10 +57,17 @@ export class TasksComponent implements OnInit {
   fetchTasks(title: string = '') {
     this._taskService
       .getTasks({
-        pageSize: 10,
-        pageNumber: 0,
+        pageSize: this.pageSize,
+        pageNumber: this.pageNumber,
         title,
       })
-      .subscribe();
+      .subscribe((res:any) => {
+        this.length = res.totalNumberOfRecords; // ✅ Use correct key from API
+      });
+  }
+  handlePageEvent(event: PageEvent): void {
+    this.pageSize = event.pageSize;
+    this.pageNumber = event.pageIndex + 1; // Angular paginator is 0-based
+    this.fetchTasks();
   }
 }

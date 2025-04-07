@@ -1,44 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from './services/users.service';
-import { IUsersCount } from '../../interfaces/users-task';
-import { IToggleData, IUsersData } from '../../interfaces/allUsers';
-import { ITaskData } from '../../employee/interFaces/tasks';
+import { IUsersData } from '../../interfaces/allUsers';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   searchForm!: FormGroup;
-  allUsers!: IUsersData[];
+  allUsers: IUsersData[] = [];
 
-  constructor(private _UsersService: UsersService) {
-    this.onGettingAllUsers();
+  pageSize = 10;
+  pageNumber = 1;
+  length = 0;
+
+  constructor(private _UsersService: UsersService, private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.searchForm = this.fb.group({
+      search: [''],
+    });
+
+    this.getUsers();
   }
-  filterByStatus(status: string) {
+
+  getUsers(status: string = ''): void {
     const title = this.searchForm.get('search')?.value || '';
-    this._UsersService
-      .onGettingAllUsers({
-        pageSize: 10,
-        pageNumber: 0,
-        title,
-        status,
-      })
-      .subscribe();
-  }
-
-  onGettingAllUsers(): void {
-    const params = { pageSize: 10, pageNumber: 1 };
+    const params = {
+      pageSize: this.pageSize,
+      pageNumber: this.pageNumber,
+      title,
+      status,
+    };
+  
     this._UsersService.onGettingAllUsers(params).subscribe({
       next: (res) => {
         this.allUsers = res.data;
-        console.log(this.allUsers);
+        this.length = res.totalNumberOfRecords; // ✅ Use correct key from API
       },
       error: (err) => {
         console.log(err);
       },
     });
+  }
+  
+
+  filterByStatus(status: string): void {
+    this.pageNumber = 1; // Reset to first page on filter
+    this.getUsers(status);
+  }
+
+  handlePageEvent(event: PageEvent): void {
+    this.pageSize = event.pageSize;
+    this.pageNumber = event.pageIndex + 1; // Angular paginator is 0-based
+    this.getUsers();
   }
 }
