@@ -4,18 +4,24 @@ import { Observable } from 'rxjs';
 import { IAllUsers, IToggleData } from '../../../interfaces/allUsers';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
-
   constructor(private _HttpClient: HttpClient) {}
 
-
-  onGettingAllUsers(params:any):Observable<IAllUsers | any>{
-    return this._HttpClient.get<IAllUsers>(`Users/Manager` , params)
+  onGettingAllUsers(params: {
+    pageSize: number;
+    pageNumber: number;
+    title?: string;
+  }): Observable<IAllUsers | any> {
+    let url = `Users/Manager?pageSize=${params.pageSize}&pageNumber=${params.pageNumber}`;
+    if (params.title) {
+      url += `&title=${encodeURIComponent(params.title)}`;
+    }
+    return this._HttpClient.get<IAllUsers>(url);
   }
 
-  onToggleActivatedUsers(id:number | null):Observable< IToggleData | any>{
-    return this._HttpClient.put(`Users/${ id}` , {id : 'id'})
+  onToggleActivatedUsers(id: number | null): Observable<IToggleData | any> {
+    return this._HttpClient.put(`Users/${id}`, { id: 'id' });
   }
 }

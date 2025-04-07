@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from './services/users.service';
 import { IUsersData } from '../../interfaces/allUsers';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -16,7 +17,11 @@ export class UsersComponent implements OnInit {
   pageNumber = 1;
   length = 0;
 
-  constructor(private _UsersService: UsersService, private fb: FormBuilder) {}
+  constructor(private _UsersService: UsersService, private fb: FormBuilder) {
+    this.searchForm = new FormGroup({
+      search: new FormControl(''),
+    });
+  }
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
@@ -24,6 +29,14 @@ export class UsersComponent implements OnInit {
     });
 
     this.getUsers();
+     this.searchForm
+          .get('search')
+          ?.valueChanges.pipe(
+            debounceTime(300) // to avoid too many API calls
+          )
+          .subscribe((value: string) => {
+            this.getUsers(value);
+          });
   }
 
   getUsers(status: string = ''): void {
@@ -34,7 +47,7 @@ export class UsersComponent implements OnInit {
       title,
       status,
     };
-  
+
     this._UsersService.onGettingAllUsers(params).subscribe({
       next: (res) => {
         this.allUsers = res.data;
@@ -45,7 +58,6 @@ export class UsersComponent implements OnInit {
       },
     });
   }
-  
 
   filterByStatus(status: string): void {
     this.pageNumber = 1; // Reset to first page on filter
