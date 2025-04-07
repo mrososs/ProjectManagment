@@ -52,6 +52,7 @@ export class UsersComponent implements OnInit {
       next: (res) => {
         this.allUsers = res.data;
         this.length = res.totalNumberOfRecords; // ✅ Use correct key from API
+        console.log(this.allUsers);
       },
       error: (err) => {
         console.log(err);

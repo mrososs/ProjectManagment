@@ -16,7 +16,7 @@ export interface IUsersData {
   phoneNumber: number;
   imagePath: string;
   isActivated: boolean;
-  task: ITaskData;
+  task: ITaskData[];
 }
 
 export interface IToggleData {
