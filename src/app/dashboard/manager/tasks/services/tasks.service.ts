@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ITasks } from '../../../../core/interfaces/tasks';
@@ -77,4 +77,17 @@ export class TasksService {
       })
     );
   }
+  deleteTask(id: number | undefined): Observable<any> {
+      if (!id) {
+        console.log('Category ID is required to delete.');
+      }
+      const token = localStorage.getItem('userToken');
+      if (!token) {
+        console.error('Token not found');
+      }
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      });
+      return this._http.delete(`Task/${id}` , { headers });
+    }
 }

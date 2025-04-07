@@ -4,6 +4,10 @@ import { Task } from '../../../core/interfaces/taskModel';
 import { FormControl, FormGroup } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteItemComponent } from '../../../shared/components/delete-item/delete-item.component';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-tasks',
@@ -18,7 +22,10 @@ export class TasksComponent implements OnInit {
   pageNumber = 1;
   length = 0;
 
-  constructor(private _taskService: TasksService) {
+  constructor(private _taskService: TasksService,
+    public dialog: MatDialog,
+    private toastr: ToastrService
+  ) {
     this.searchForm = new FormGroup({
       search: new FormControl(''),
     });
@@ -70,4 +77,38 @@ export class TasksComponent implements OnInit {
     this.pageNumber = event.pageIndex + 1; // Angular paginator is 0-based
     this.fetchTasks();
   }
+
+    getTasks(): void {
+      this._taskService.getTasks({
+        pageSize: this.pageSize,
+        pageNumber: this.pageNumber,
+      });
+    }
+    //delete project
+    openDeleteDialog(task: Task): void {
+      const dialogRef = this.dialog.open(DeleteItemComponent , {
+        data: {name: task.title},
+      });
+    
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          console.log(task.id);
+          this.deleteTask(task.id)
+        }
+        });
+      }
+      deleteTask(id : number | undefined): void {
+        this._taskService.deleteTask(id).subscribe({
+          next: (res) => {
+            console.log(res);
+            this.toastr.success('project Deleted Successfully');
+          },
+          error: (err) => {
+            this.toastr.error(err.error.message);
+          },
+          complete: () => { 
+            this.getTasks();
+          }
+        }) 
+      }
 }
