@@ -68,7 +68,6 @@
                 <td>{{ user.userName }}</td>
                 <td>
                   <span
-                    (click)="toggleStatus(user.id)"
                     [ngClass]="
                       user.isActivated ? 'badge-active' : 'badge-inactive'
                     "
@@ -86,8 +85,9 @@
                   </button>
 
                   <mat-menu #userMenu="matMenu">
-                    <button mat-menu-item [routerLink]="['view', user.id]">
-                      <mat-icon>remove_red_eye</mat-icon> Block
+                    <button mat-menu-item (click)="toggleStatus(user.id)">
+                      <mat-icon>remove_red_eye</mat-icon>
+                      {{ user.isActivated ? "block" : "unblock" }}
                     </button>
                     <button mat-menu-item [routerLink]="['edit', user.id]">
                       <mat-icon>edit</mat-icon> View
