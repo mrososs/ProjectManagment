@@ -56,8 +56,8 @@ export class ProjectsComponent implements OnInit {
   }
   getProjects(): void {
     this.projectService.getProjectsForManager({
-      pageSize: 10,
-      pageNumber: 1,
+      pageSize: this.pageSize,
+      pageNumber: this.pageNumber,
     });
   }
   //delete project
