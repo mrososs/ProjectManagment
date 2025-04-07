@@ -1,0 +1,57 @@
+<section class="bg-light vh-100">
+    <div class="header-page bg-white p-4 mb-4">
+        <a routerLink="/dashboard/manager/projects" class="d-flex align-items-center text-dark">
+            <mat-icon>chevron_left</mat-icon>
+            <span>view all projects</span>
+        </a>
+        <h2 class="mt-2 mb-0">Add a New Project</h2>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <form [formGroup]="userForm">
+                    <div class="shared-card">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="custom-form-field" appearance="outline">
+                              <label class="shared-title">User Name</label>
+                              <input formControlName="userName" type="text" id="name" class="custom-input">
+                            </div>
+                            <div class="custom-form-field" appearance="outline">
+                              <label class="shared-title">Email</label>
+                              <input formControlName="email" type="email" id="email" class="custom-input">
+                            </div>
+                            <div class="custom-form-field" appearance="outline">
+                              <label class="shared-title">Country</label>
+                              <input formControlName="country" type="text" id="country" class="custom-input">
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="custom-form-field" appearance="outline">
+                              <label class="shared-title">Phone Number</label>
+                              <input formControlName="phoneNumber" type="text" id="phoneNumber" class="custom-input">
+                            </div>
+                            <div class="custom-form-field" appearance="outline">
+                              <label class="shared-title">Date Created</label>
+                              <input formControlName="creationDate" type="text" id="creationDate" class="custom-input">
+                            </div>
+                            <div class="custom-form-field form-check mt-2">
+                              <input formControlName="isActivated" type="checkbox" id="isActivated" class="form-check-input">
+                              <label class="form-check-label" for="isActivated">Activated</label>
+                            </div>
+                          </div>    
+                          <div class="mt-3" *ngIf="imagePath">
+                            <label class="shared-title d-block">User Image</label>
+                            <img [src]=" imagePath || 'assets/img/user.png'" alt="User Image" class="img-fluid rounded" style="max-width: 200px;">
+                          </div>                    
+                    </div>
+                        <div class="shared-actions">
+                            <a type="button" routerLink="/dashboard/manager/projects" class="shared-cancel-button">Cancel</a>
+                        </div>
+                    </div>      
+                </form>          
+            </div>
+        </div>
+    </div>
+</section>

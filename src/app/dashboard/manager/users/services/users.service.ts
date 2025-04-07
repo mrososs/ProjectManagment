@@ -24,4 +24,8 @@ export class UsersService {
   onToggleActivatedUsers(id: number): Observable<IToggleData | any> {
     return this._HttpClient.put(`Users/${id}`, { id });
   }
+
+  getUserData(id: number): Observable<any> {
+    return this._HttpClient.get(`Users/${id}`);
+  }
 }
