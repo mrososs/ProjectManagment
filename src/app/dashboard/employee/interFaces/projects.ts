@@ -1,6 +1,7 @@
 import { Data } from "@angular/router"
 import { ITaskData } from "./tasks"
 
+
 export interface IProject{
   pageNumber: number,
   pageSize: number,
@@ -14,8 +15,8 @@ export interface IProjectData {
       id: number,
       title: string,
       description: string,
-      creationDate: Data,
-      modificationDate: Data,
+      creationDate: Date;
+      modificationDate: Date;
       task: ITaskData [] ,
 }
 

@@ -25,6 +25,8 @@ export class ProjectComponent {
 
   }
   onGettingAllEmployeeProjects():void{
+
+
     const title = this.searchForm.get('search')?.value || '';
     const params = {
       pageSize: this.pageSize,
@@ -33,6 +35,7 @@ export class ProjectComponent {
     }
     this._ProjectService.onGettingAllEmployeeProjects(params).subscribe({
       next :(res)=>{
+        console.log(res);
         this.allProjectData=res
         this.allProjects=res.data
         this.pageSize=res.totalNumberOfPages

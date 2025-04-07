@@ -73,23 +73,11 @@
             <ng-container >
               <tr *ngFor="let project  of allProjects">
                 <td >{{project.title}}</td>
-                <td ><button class="primary-btn">   {{project.description}}</button></td>
-                <td >{{project.creationDate }}</td>
-                <td >{{project.modificationDate   }}</td>
-                <!-- <td>
-                  <button mat-icon-button [matMenuTriggerFor]="userMenu">
-                    <mat-icon style="color: black">arrow_drop_down</mat-icon>
-                  </button>
-
-                  <mat-menu #userMenu="matMenu">
-                    <button mat-menu-item [routerLink]="['view', userTask.id]">
-                      <mat-icon>delete</mat-icon> block
-                    </button>
-                    <button mat-menu-item [routerLink]="['edit', userTask.id]">
-                      <mat-icon>remove_red_eye</mat-icon> View
-                    </button>
-                  </mat-menu>
-                </td> -->
+                <td >{{project.description}}</td>
+                <!-- | date :'MMMM d, y'  -->
+                <td >{{project?.creationDate }}</td>
+                <td >{{project?.modificationDate  }}</td>
+          
               </tr>
             </ng-container>
           </tbody>
