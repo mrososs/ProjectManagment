@@ -4,7 +4,8 @@
   </div>
   <div class="row pt-5 pb-2 px-5 ">
 
-    <table class="shadow">
+    <div class="table table-responsive">
+    <table class="table">
       <thead >
         <th> User Name</th>
         <th> Statues</th>
@@ -16,8 +17,26 @@
       <tbody>
         <tr *ngFor=" let user of allUsers">
           <td >{{user.userName}}</td>
-          <td *ngIf="user.isActivated"> <button class="done-active-btn">Active</button></td>
-          <td *ngIf="!user.isActivated"> <button class="not-active-btn">Not Active</button></td>
+
+           <td  >
+           <a (click)="onToggleActivatedUsers(user)" >
+            <button *ngIf="user.isActivated" class="done-active-btn">Active</button>
+            <button  *ngIf="!user.isActivated"  class="not-active-btn" > Not Active</button>
+           </a>
+          </td>
+
+          <!-- <td *ngIf="!user.isActivated" >
+            <a (click)="onToggleActivatedUsers(user.id)" >
+             <button *ngIf="toggleActive" class="done-active-btn">Active</button>
+             <button  *ngIf="!toggleActive"  class="not-active-btn" > Not Active</button>
+            </a>
+           </td> -->
+
+           <!-- <td *ngIf="!user.isActivated">
+            <a (click)="onToggleActivatedUsers(user.task[0].id)" >
+               <button [class]="isActive? 'done-active-btn' : 'not-active-btn'" >Not Active</button>
+           </a>
+          </td> -->
 
          <td >{{user.phoneNumber}}</td>
           <td >{{user.email}}</td>
@@ -26,7 +45,16 @@
 
         </tr>
       </tbody>
+
     </table>
+         <mat-paginator [length]="length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[3,5, 10, 15]"
+      aria-label="Select page"
+      (page)="handlePageEvent($event)">
+  </mat-paginator>
+  </div>
+
 
 
 

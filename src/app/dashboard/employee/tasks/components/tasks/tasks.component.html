@@ -5,7 +5,7 @@
     <div class="row pt-5 pb-2 px-5 ">
 
     <div cdkDropListGroup>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-4">
           <div class="example-container">
             <h2 class="head-title  pb-3 ">To do</h2>
@@ -13,7 +13,7 @@
               cdkDropList
               [cdkDropListData]="todo"
               class="example-list"
-              (cdkDropListDropped)="drop($event)"
+              (cdkDropListDropped)="drop($event  )"
             >
               @for (item of todo; track item) {
               <div class="example-box" cdkDrag>{{ item }}</div>
@@ -53,7 +53,65 @@
             </div>
           </div>
         </div>
+      </div> -->
+
+
+
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="example-container">
+            <h2 class="head-title  pb-3 ">To do</h2>
+            <div
+              id="toDo"
+              cdkDropList
+              [cdkDropListData]="toDoData"
+              class="example-list"
+              (cdkDropListDropped)="drop($event  )"
+            >
+              @for (item of toDoData; track item) {
+              <div class="example-box" cdkDrag>{{ item.title }}</div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 ">
+          <div class="example-container">
+            <h2 class="head-title  pb-3">In Progress</h2>
+            <div
+              id="inProgress"
+              cdkDropList
+              [cdkDropListData]="inProgressData"
+              class="example-list"
+              (cdkDropListDropped)="drop($event)"
+            >
+              @for (item of inProgressData; track item) {
+              <div class="example-box" cdkDrag>{{ item.title }}</div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="example-container">
+            <h2 class="head-title  pb-3">Done</h2>
+            <div
+              id="done"
+              cdkDropList
+              [cdkDropListData]="doneData"
+              class="example-list"
+              (cdkDropListDropped)="drop($event)"
+            >
+              @for (item of doneData; track item) {
+              <div class="example-box" cdkDrag>{{ item.title }}</div>
+              }
+            </div>
+          </div>
+        </div>
       </div>
+
+
     </div>
   </div>
 </section>

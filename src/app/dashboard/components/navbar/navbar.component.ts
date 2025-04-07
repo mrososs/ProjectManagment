@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { User } from '../../../core/interfaces/user';
 import { HelperService } from '../../services/helper.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,7 @@ export class NavbarComponent {
   defaultImage = '../../../../assets/img/user.png';
   @Output() toggleSidebar = new EventEmitter<void>();
 
-  constructor(private helperService: HelperService) {}
+  constructor(private helperService: HelperService ,  private _Router:Router ) {}
   ngOnInit(): void {
     this.helperService.currentProfileImage.subscribe((image) => {
       if (image) this.defaultImage = image;
@@ -43,5 +44,9 @@ export class NavbarComponent {
       },
       error: (err) => console.error('Error fetching user data:', err),
     });
+  }
+  logOut():void{
+    localStorage.clear
+    this._Router.navigate(['/auth'])
   }
 }
