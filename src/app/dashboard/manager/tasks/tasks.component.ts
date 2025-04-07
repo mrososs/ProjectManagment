@@ -77,13 +77,6 @@ export class TasksComponent implements OnInit {
     this.pageNumber = event.pageIndex + 1; // Angular paginator is 0-based
     this.fetchTasks();
   }
-
-    getTasks(): void {
-      this._taskService.getTasks({
-        pageSize: this.pageSize,
-        pageNumber: this.pageNumber,
-      });
-    }
     //delete project
     openDeleteDialog(task: Task): void {
       const dialogRef = this.dialog.open(DeleteItemComponent , {
@@ -101,13 +94,13 @@ export class TasksComponent implements OnInit {
         this._taskService.deleteTask(id).subscribe({
           next: (res) => {
             console.log(res);
-            this.toastr.success('project Deleted Successfully');
+            this.toastr.success('Task Deleted Successfully');
           },
           error: (err) => {
             this.toastr.error(err.error.message);
           },
           complete: () => { 
-            this.getTasks();
+            this.tasks = this.tasks.filter(task => task.id !== id);
           }
         }) 
       }
