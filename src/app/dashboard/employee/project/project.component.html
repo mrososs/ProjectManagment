@@ -40,7 +40,7 @@
   <div class="container px-5 mt-3">
     <div class="w-100 bg-white table-container">
       <div class="p-3">
-        <form [formGroup]="searchForm">
+        <form [formGroup]="searchForm"  >
           <div class="d-flex justify-content-start align-items-center gap-3">
             <div class="">
               <mat-form-field appearance="outline" class="custom-search">
@@ -70,14 +70,12 @@
             </tr>
           </thead>
           <tbody>
-            <!-- *ngFor="let user of allProjects" -->
             <ng-container >
               <tr *ngFor="let project  of allProjects">
                 <td >{{project.title}}</td>
                 <td ><button class="primary-btn">   {{project.description}}</button></td>
-                <td >{{project.creationDate  | date:'yyyy MMM dd' }}</td>
-                <td >{{project.modificationDate   | date:'yyyy MMM dd' }}</td>
-
+                <td >{{project.creationDate }}</td>
+                <td >{{project.modificationDate   }}</td>
                 <!-- <td>
                   <button mat-icon-button [matMenuTriggerFor]="userMenu">
                     <mat-icon style="color: black">arrow_drop_down</mat-icon>
@@ -100,7 +98,7 @@
         <mat-paginator
         [length]="length"
         [pageSize]="pageSize"
-        [pageSizeOptions]="[5, 10, 15]"
+        [pageSizeOptions]="[3,5, 10, 15]"
         aria-label="Select page"
         (page)="handlePageEvent($event)"
       ></mat-paginator>

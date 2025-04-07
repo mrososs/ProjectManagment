@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ProjectService } from './services/project.service';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
+import { IProject, IProjectData } from '../interFaces/projects';
 
 
 @Component({
@@ -10,34 +11,35 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrl: './project.component.scss'
 })
 export class ProjectComponent {
-  allProjects !:any[]
-
-  pageSize = 10;
-  pageNumber = 1;
-  length = 0;
-
-  searchForm!: FormGroup;
+  allProjectData !:IProject
+  allProjects !:IProjectData[]
+  pageSize :number= 10;
+  pageNumber :number = 1;
+  length :number = 0;
+  searchForm: FormGroup= new FormGroup({
+        search: new FormControl(''),
+      });
 
   constructor(private _ProjectService:ProjectService){
     this.onGettingAllEmployeeProjects()
+
   }
   onGettingAllEmployeeProjects():void{
-    // const title = this.searchForm.get('search')?.value || '';
+    const title = this.searchForm.get('search')?.value || '';
     const params = {
       pageSize: this.pageSize,
       pageNumber: this.pageNumber,
-      // title :title,
+       title :title,
     }
     this._ProjectService.onGettingAllEmployeeProjects(params).subscribe({
       next :(res)=>{
-        console.log(res);
+        this.allProjectData=res
         this.allProjects=res.data
         this.pageSize=res.totalNumberOfPages
-        this.pageNumber = res.  totalNumberOfRecords
+        this.length = res.totalNumberOfRecords
       } ,
       error :(err)=>{
         console.log(err);
-
       } ,
     })
 
@@ -46,9 +48,11 @@ export class ProjectComponent {
 
 
     handlePageEvent(event: PageEvent): void {
-      this.pageSize = event.pageSize;
-      this.pageNumber = event.pageIndex + 1; // Angular paginator is 0-based
-
+      console.log(event);
+      this.length = event.length
+      this.pageSize=event.pageSize
+      this.pageNumber = event.pageIndex
+      this.onGettingAllEmployeeProjects()
     }
 
 }
