@@ -55,46 +55,29 @@ export class TasksComponent {
 
 
   drop(event: CdkDragDrop<ITaskData[]> ) {
-    console.log(event);
-
-    const currentItem = event.item.data;
-    const previousContainer = event.previousContainer;
-    const currentContainer = event.container;
-    // Update the item's status
-    const newStatus = event.container.id; // The ID of the container indicates the new status
-    this._TaskService.updateItemStatus(currentItem.id , newStatus ).subscribe({
+    // console.log(event);
+    const currentItemID = event.item.data; // item id By --> [cdkDragData]="item.id"
+    const newStatus = event.container.id; // Update the item's status--> The ID of the container indicates the new status
+    this._TaskService.updateItemStatus(currentItemID, newStatus ).subscribe({
       next :(res) =>{
-         // If the API call is successful, update the local data
-        currentItem.status = res.status;
-
-        // Move the item between containers (dragging from one container to another)
-          if (previousContainer !== currentContainer) {
-          // Remove from the previous container
-          previousContainer.data = previousContainer.data.filter(item => item.id !== currentItem.id);
-
-          // Add to the current container
-          currentContainer.data.push(currentItem);
-        }
-
+        // console.log(res);
       } ,
       error :(err) =>{
          console.error('Error updating item status:', err);
-
       } ,
 
     })
 
-
-    // if (event.previousContainer === event.container) {
-    //   moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    // } else {
-    //   transferArrayItem(
-    //     event.previousContainer.data,
-    //     event.container.data,
-    //     event.previousIndex,
-    //     event.currentIndex,
-    //   );
-    // }
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
 
 
