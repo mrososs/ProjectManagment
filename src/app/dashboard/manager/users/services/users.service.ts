@@ -8,6 +8,28 @@ import { IAllUsers, IToggleData } from '../../../interfaces/allUsers';
 })
 export class UsersService {
   constructor(private _HttpClient: HttpClient) {}
+  filterUsers(params: {
+    pageSize: number;
+    pageNumber: number;
+    userName?: string;
+    email?: string;
+    country?: string;
+  }): Observable<IAllUsers> {
+    let url = `Users/?pageSize=${params.pageSize}&pageNumber=${params.pageNumber}`;
+  
+    if (params.userName) {
+      url += `&userName=${encodeURIComponent(params.userName)}`;
+    }
+    if (params.email) {
+      url += `&email=${encodeURIComponent(params.email)}`;
+    }
+    if (params.country) {
+      url += `&country=${encodeURIComponent(params.country)}`;
+    }
+  
+    return this._HttpClient.get<IAllUsers>(url);
+  }
+  
 
   onGettingAllUsers(params: {
     pageSize: number;
@@ -15,9 +37,7 @@ export class UsersService {
     title?: string;
   }): Observable<IAllUsers | any> {
     let url = `Users/Manager?pageSize=${params.pageSize}&pageNumber=${params.pageNumber}`;
-    if (params.title) {
-      url += `&title=${encodeURIComponent(params.title)}`;
-    }
+
     return this._HttpClient.get<IAllUsers>(url);
   }
 

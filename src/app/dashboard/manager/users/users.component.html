@@ -17,7 +17,7 @@
                 <mat-icon matPrefix>search</mat-icon>
                 <input
                   matInput
-                  placeholder="Search By Title"
+                  placeholder="Search By Filter"
                   formControlName="search"
                 />
               </mat-form-field>
@@ -33,15 +33,18 @@
               </button>
 
               <mat-menu #filterMenu="matMenu">
-                <button mat-menu-item (click)="filterByStatus('Active')">
-                  <mat-icon>check_box_outline_blank</mat-icon> Active
+                <button mat-menu-item (click)="setFilterField('userName')">
+                  <mat-icon>check_box_outline_blank</mat-icon> user Name
                 </button>
-                <button mat-menu-item (click)="filterByStatus('Not Active')">
-                  <mat-icon>hourglass_empty</mat-icon> Not Active
+                <button mat-menu-item (click)="setFilterField('email')">
+                  <mat-icon>hourglass_empty</mat-icon> Email
+                </button>
+                <button mat-menu-item (click)="setFilterField('country')">
+                  <mat-icon>hourglass_empty</mat-icon> Country
                 </button>
 
                 <mat-divider></mat-divider>
-                <button mat-menu-item (click)="filterByStatus('')">
+                <button mat-menu-item (click)="resetFilter()">
                   <mat-icon>clear</mat-icon> Clear Filter
                 </button>
               </mat-menu>
@@ -78,7 +81,16 @@
                 </td>
                 <td>{{ user.phoneNumber }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.task[0].creationDate | date : "shortDate" }}</td>
+                <td>
+                  {{
+                    user.task.length > 0
+                      ? (user.task[0].creationDate | date : 'shortDate')
+                      : 'N/A'
+                  }}
+                </td>
+                
+                
+
                 <td>
                   <button mat-icon-button [matMenuTriggerFor]="userMenu">
                     <mat-icon style="color: black">arrow_drop_down</mat-icon>

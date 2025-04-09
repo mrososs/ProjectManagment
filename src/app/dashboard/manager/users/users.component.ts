@@ -12,6 +12,7 @@ import { debounceTime } from 'rxjs';
 export class UsersComponent implements OnInit {
   searchForm!: FormGroup;
   allUsers: IUsersData[] = [];
+  filterField: string = 'userName'; // default filter field
 
   pageSize = 10;
   pageNumber = 1;
@@ -29,23 +30,22 @@ export class UsersComponent implements OnInit {
     });
 
     this.getUsers();
-     this.searchForm
-          .get('search')
-          ?.valueChanges.pipe(
-            debounceTime(300) // to avoid too many API calls
-          )
-          .subscribe((value: string) => {
-            this.getUsers(value);
-          });
+    this.searchForm
+      .get('search')
+      ?.valueChanges.pipe(debounceTime(300))
+      .subscribe((value: string) => {
+        if (value.trim()) {
+          this.searchUsers(value.trim());
+        } else {
+          this.getUsers(); // fallback to default list
+        }
+      });
   }
 
-  getUsers(status: string = ''): void {
-    const title = this.searchForm.get('search')?.value || '';
+  getUsers(): void {
     const params = {
       pageSize: this.pageSize,
       pageNumber: this.pageNumber,
-      title,
-      status,
     };
 
     this._UsersService.onGettingAllUsers(params).subscribe({
@@ -60,9 +60,39 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  filterByStatus(status: string): void {
-    this.pageNumber = 1; // Reset to first page on filter
-    this.getUsers(status);
+  setFilterField(field: string): void {
+    this.filterField = field;
+    this.pageNumber = 1;
+    const searchTerm = this.searchForm.get('search')?.value;
+    if (searchTerm) {
+      this.searchUsers(searchTerm);
+    } else {
+      this.getUsers(); // fallback to full list
+    }
+  }
+
+  searchUsers(searchValue: string): void {
+    const params: any = {
+      pageSize: this.pageSize,
+      pageNumber: this.pageNumber,
+    };
+
+    // Only add the dynamic field if it's set
+    if (this.filterField) {
+      params[this.filterField] = searchValue;
+    }
+
+    this._UsersService.filterUsers(params).subscribe({
+      next: (res) => {
+        this.allUsers = res.data;
+      },
+      error: (err) => console.error(err),
+    });
+  }
+  resetFilter(): void {
+    this.filterField = 'userName'; // or null if you want to not filter
+    this.searchForm.get('search')?.setValue('');
+    this.getUsers();
   }
 
   handlePageEvent(event: PageEvent): void {
@@ -81,5 +111,4 @@ export class UsersComponent implements OnInit {
       },
     });
   }
-  
 }
